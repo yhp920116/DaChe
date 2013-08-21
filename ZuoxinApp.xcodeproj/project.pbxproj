@@ -59,6 +59,12 @@
 		88AFF7B117C3665B00DCDE7E /* ZuoxinMore.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AFF7B017C3665B00DCDE7E /* ZuoxinMore.m */; };
 		88AFF7BA17C36A8300DCDE7E /* BackBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AFF7B717C36A8300DCDE7E /* BackBtn.m */; };
 		88AFF7BB17C36A8300DCDE7E /* CustomBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AFF7B917C36A8300DCDE7E /* CustomBtn.m */; };
+		88F3C86D17C44BDE00F07127 /* DriverInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */; };
+		88F3C87717C44FD300F07127 /* DPMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C87417C44FD300F07127 /* DPMeterView.m */; };
+		88F3C87817C44FD300F07127 /* UIBezierPath+BasicShapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C87617C44FD300F07127 /* UIBezierPath+BasicShapes.m */; };
+		88F3C87A17C4537000F07127 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F3C87917C4537000F07127 /* QuartzCore.framework */; };
+		88F3C88217C465B500F07127 /* contentSprarator.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F3C88017C465B500F07127 /* contentSprarator.png */; };
+		88F3C88317C465B500F07127 /* contentSprarator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F3C88117C465B500F07127 /* contentSprarator@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +133,15 @@
 		88AFF7B717C36A8300DCDE7E /* BackBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackBtn.m; sourceTree = "<group>"; };
 		88AFF7B817C36A8300DCDE7E /* CustomBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBtn.h; sourceTree = "<group>"; };
 		88AFF7B917C36A8300DCDE7E /* CustomBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBtn.m; sourceTree = "<group>"; };
+		88F3C86B17C44BDE00F07127 /* DriverInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverInfoCell.h; sourceTree = "<group>"; };
+		88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfoCell.m; sourceTree = "<group>"; };
+		88F3C87317C44FD300F07127 /* DPMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMeterView.h; sourceTree = "<group>"; };
+		88F3C87417C44FD300F07127 /* DPMeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMeterView.m; sourceTree = "<group>"; };
+		88F3C87517C44FD300F07127 /* UIBezierPath+BasicShapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+BasicShapes.h"; sourceTree = "<group>"; };
+		88F3C87617C44FD300F07127 /* UIBezierPath+BasicShapes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+BasicShapes.m"; sourceTree = "<group>"; };
+		88F3C87917C4537000F07127 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		88F3C88017C465B500F07127 /* contentSprarator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contentSprarator.png; sourceTree = "<group>"; };
+		88F3C88117C465B500F07127 /* contentSprarator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contentSprarator@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F3C87A17C4537000F07127 /* QuartzCore.framework in Frameworks */,
 				8897E9EA17C376B2002ECE90 /* MapKit.framework in Frameworks */,
 				88AFF72517C3615200DCDE7E /* UIKit.framework in Frameworks */,
 				88AFF72717C3615200DCDE7E /* Foundation.framework in Frameworks */,
@@ -147,6 +163,7 @@
 		88AFF71517C3615200DCDE7E = {
 			isa = PBXGroup;
 			children = (
+				88F3C87917C4537000F07127 /* QuartzCore.framework */,
 				88AFF79C17C3657400DCDE7E /* class */,
 				88AFF74D17C363F700DCDE7E /* Images */,
 				88AFF72A17C3615200DCDE7E /* ZuoxinApp */,
@@ -253,6 +270,8 @@
 		88AFF74D17C363F700DCDE7E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				88F3C88017C465B500F07127 /* contentSprarator.png */,
+				88F3C88117C465B500F07127 /* contentSprarator@2x.png */,
 				88AFF74E17C3642300DCDE7E /* blackArrow.png */,
 				88AFF74F17C3642300DCDE7E /* blackArrow@2x.png */,
 				88AFF75017C3642300DCDE7E /* blueArrow.png */,
@@ -299,6 +318,12 @@
 				88AFF7B717C36A8300DCDE7E /* BackBtn.m */,
 				88AFF7B817C36A8300DCDE7E /* CustomBtn.h */,
 				88AFF7B917C36A8300DCDE7E /* CustomBtn.m */,
+				88F3C86B17C44BDE00F07127 /* DriverInfoCell.h */,
+				88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */,
+				88F3C87317C44FD300F07127 /* DPMeterView.h */,
+				88F3C87417C44FD300F07127 /* DPMeterView.m */,
+				88F3C87517C44FD300F07127 /* UIBezierPath+BasicShapes.h */,
+				88F3C87617C44FD300F07127 /* UIBezierPath+BasicShapes.m */,
 			);
 			name = class;
 			sourceTree = "<group>";
@@ -392,6 +417,8 @@
 				88AFF78C17C3642300DCDE7E /* whiteArrow.png in Resources */,
 				88AFF78D17C3642300DCDE7E /* whiteArrow@2x.png in Resources */,
 				88AFF78F17C3643300DCDE7E /* tabbar-4@2x.png in Resources */,
+				88F3C88217C465B500F07127 /* contentSprarator.png in Resources */,
+				88F3C88317C465B500F07127 /* contentSprarator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +440,9 @@
 				88AFF7B117C3665B00DCDE7E /* ZuoxinMore.m in Sources */,
 				88AFF7BA17C36A8300DCDE7E /* BackBtn.m in Sources */,
 				88AFF7BB17C36A8300DCDE7E /* CustomBtn.m in Sources */,
+				88F3C86D17C44BDE00F07127 /* DriverInfoCell.m in Sources */,
+				88F3C87717C44FD300F07127 /* DPMeterView.m in Sources */,
+				88F3C87817C44FD300F07127 /* UIBezierPath+BasicShapes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +516,10 @@
 				GCC_PREFIX_HEADER = "ZuoxinApp/ZuoxinApp-Prefix.pch";
 				INFOPLIST_FILE = "ZuoxinApp/ZuoxinApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = (
+					"-objC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -499,6 +533,10 @@
 				GCC_PREFIX_HEADER = "ZuoxinApp/ZuoxinApp-Prefix.pch";
 				INFOPLIST_FILE = "ZuoxinApp/ZuoxinApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = (
+					"-objC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

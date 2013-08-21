@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TabBarController;
 
 @interface Zuoxin_comAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) TabBarController *tabBarController;
 
 @end

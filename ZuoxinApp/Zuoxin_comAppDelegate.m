@@ -2,11 +2,12 @@
 //  Zuoxin_comAppDelegate.m
 //  ZuoxinApp
 //
-//  Created by 新工厂 on 13-8-20.
+//  Created by 杨海鹏 on 13-8-20.
 //  Copyright (c) 2013年 Zuoxin.com. All rights reserved.
 //
 
 #import "Zuoxin_comAppDelegate.h"
+#import "TabBarController.h"
 
 @implementation Zuoxin_comAppDelegate
 
@@ -15,6 +16,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    self.tabBarController = [[TabBarController alloc] init];
+    self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }
