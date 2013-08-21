@@ -16,9 +16,10 @@ enum {
 };
 typedef NSUInteger TaxiInfoMode;
 
-@interface ZuoxinTaxiInfo : BasicViewModel<UITableViewDataSource,UITableViewDelegate>
+@interface ZuoxinTaxiInfo : BasicViewModel<UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate>
 {
     TaxiInfoMode _taxiInfoMode;
+    MKMapView *_mapView;
 }
 
 @property(nonatomic, strong) MKMapView *mapView;

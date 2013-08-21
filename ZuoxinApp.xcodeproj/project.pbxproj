@@ -59,12 +59,22 @@
 		88AFF7B117C3665B00DCDE7E /* ZuoxinMore.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AFF7B017C3665B00DCDE7E /* ZuoxinMore.m */; };
 		88AFF7BA17C36A8300DCDE7E /* BackBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AFF7B717C36A8300DCDE7E /* BackBtn.m */; };
 		88AFF7BB17C36A8300DCDE7E /* CustomBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AFF7B917C36A8300DCDE7E /* CustomBtn.m */; };
+		88BEECB817C4984600205FB7 /* command.json in Resources */ = {isa = PBXBuildFile; fileRef = 88BEECB717C4984600205FB7 /* command.json */; };
+		88BEECC117C49CE600205FB7 /* DriverBasicInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEECC017C49CE600205FB7 /* DriverBasicInfo.m */; };
+		88BEECC717C49DBD00205FB7 /* DriverBasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEECC617C49DBD00205FB7 /* DriverBasicInfoView.m */; };
+		88BEECCA17C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEECC917C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m */; };
 		88F3C86D17C44BDE00F07127 /* DriverInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */; };
 		88F3C87717C44FD300F07127 /* DPMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C87417C44FD300F07127 /* DPMeterView.m */; };
 		88F3C87817C44FD300F07127 /* UIBezierPath+BasicShapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C87617C44FD300F07127 /* UIBezierPath+BasicShapes.m */; };
 		88F3C87A17C4537000F07127 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F3C87917C4537000F07127 /* QuartzCore.framework */; };
 		88F3C88217C465B500F07127 /* contentSprarator.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F3C88017C465B500F07127 /* contentSprarator.png */; };
 		88F3C88317C465B500F07127 /* contentSprarator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F3C88117C465B500F07127 /* contentSprarator@2x.png */; };
+		88F3C88617C48B1C00F07127 /* search-cell-accessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F3C88417C48B1C00F07127 /* search-cell-accessory@2x.png */; };
+		88F3C88717C48B1C00F07127 /* search-cell-avatar-shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88F3C88517C48B1C00F07127 /* search-cell-avatar-shadow@2x.png */; };
+		88F3C88D17C48CA700F07127 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88F3C88C17C48CA700F07127 /* apple.jpg */; };
+		88F3C89017C4929F00F07127 /* DriverInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C88F17C4929F00F07127 /* DriverInfo.m */; };
+		88F3C89217C4957500F07127 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F3C89117C4957500F07127 /* CoreLocation.framework */; };
+		88F3C89417C4958000F07127 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F3C89317C4958000F07127 /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +143,13 @@
 		88AFF7B717C36A8300DCDE7E /* BackBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackBtn.m; sourceTree = "<group>"; };
 		88AFF7B817C36A8300DCDE7E /* CustomBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBtn.h; sourceTree = "<group>"; };
 		88AFF7B917C36A8300DCDE7E /* CustomBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBtn.m; sourceTree = "<group>"; };
+		88BEECB717C4984600205FB7 /* command.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = command.json; sourceTree = "<group>"; };
+		88BEECBF17C49CE600205FB7 /* DriverBasicInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverBasicInfo.h; sourceTree = "<group>"; };
+		88BEECC017C49CE600205FB7 /* DriverBasicInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverBasicInfo.m; sourceTree = "<group>"; };
+		88BEECC517C49DBD00205FB7 /* DriverBasicInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverBasicInfoView.h; sourceTree = "<group>"; };
+		88BEECC617C49DBD00205FB7 /* DriverBasicInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverBasicInfoView.m; sourceTree = "<group>"; };
+		88BEECC817C4AB0E00205FB7 /* DriverBasicInfoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverBasicInfoAnnotation.h; sourceTree = "<group>"; };
+		88BEECC917C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverBasicInfoAnnotation.m; sourceTree = "<group>"; };
 		88F3C86B17C44BDE00F07127 /* DriverInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverInfoCell.h; sourceTree = "<group>"; };
 		88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfoCell.m; sourceTree = "<group>"; };
 		88F3C87317C44FD300F07127 /* DPMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMeterView.h; sourceTree = "<group>"; };
@@ -142,6 +159,13 @@
 		88F3C87917C4537000F07127 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		88F3C88017C465B500F07127 /* contentSprarator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contentSprarator.png; sourceTree = "<group>"; };
 		88F3C88117C465B500F07127 /* contentSprarator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contentSprarator@2x.png"; sourceTree = "<group>"; };
+		88F3C88417C48B1C00F07127 /* search-cell-accessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-cell-accessory@2x.png"; sourceTree = "<group>"; };
+		88F3C88517C48B1C00F07127 /* search-cell-avatar-shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-cell-avatar-shadow@2x.png"; sourceTree = "<group>"; };
+		88F3C88C17C48CA700F07127 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
+		88F3C88E17C4929F00F07127 /* DriverInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverInfo.h; sourceTree = "<group>"; };
+		88F3C88F17C4929F00F07127 /* DriverInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfo.m; sourceTree = "<group>"; };
+		88F3C89117C4957500F07127 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		88F3C89317C4958000F07127 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +173,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F3C89417C4958000F07127 /* AddressBook.framework in Frameworks */,
+				88F3C89217C4957500F07127 /* CoreLocation.framework in Frameworks */,
 				88F3C87A17C4537000F07127 /* QuartzCore.framework in Frameworks */,
 				8897E9EA17C376B2002ECE90 /* MapKit.framework in Frameworks */,
 				88AFF72517C3615200DCDE7E /* UIKit.framework in Frameworks */,
@@ -163,7 +189,7 @@
 		88AFF71517C3615200DCDE7E = {
 			isa = PBXGroup;
 			children = (
-				88F3C87917C4537000F07127 /* QuartzCore.framework */,
+				88BEECB717C4984600205FB7 /* command.json */,
 				88AFF79C17C3657400DCDE7E /* class */,
 				88AFF74D17C363F700DCDE7E /* Images */,
 				88AFF72A17C3615200DCDE7E /* ZuoxinApp */,
@@ -183,6 +209,9 @@
 		88AFF72317C3615200DCDE7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88F3C89317C4958000F07127 /* AddressBook.framework */,
+				88F3C89117C4957500F07127 /* CoreLocation.framework */,
+				88F3C87917C4537000F07127 /* QuartzCore.framework */,
 				8897E9E917C376B2002ECE90 /* MapKit.framework */,
 				88AFF72417C3615200DCDE7E /* UIKit.framework */,
 				88AFF72617C3615200DCDE7E /* Foundation.framework */,
@@ -270,6 +299,9 @@
 		88AFF74D17C363F700DCDE7E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				88F3C88C17C48CA700F07127 /* apple.jpg */,
+				88F3C88417C48B1C00F07127 /* search-cell-accessory@2x.png */,
+				88F3C88517C48B1C00F07127 /* search-cell-avatar-shadow@2x.png */,
 				88F3C88017C465B500F07127 /* contentSprarator.png */,
 				88F3C88117C465B500F07127 /* contentSprarator@2x.png */,
 				88AFF74E17C3642300DCDE7E /* blackArrow.png */,
@@ -324,8 +356,24 @@
 				88F3C87417C44FD300F07127 /* DPMeterView.m */,
 				88F3C87517C44FD300F07127 /* UIBezierPath+BasicShapes.h */,
 				88F3C87617C44FD300F07127 /* UIBezierPath+BasicShapes.m */,
+				88F3C88E17C4929F00F07127 /* DriverInfo.h */,
+				88F3C88F17C4929F00F07127 /* DriverInfo.m */,
+				88BEECBE17C49C7F00205FB7 /* DriverAnnotation */,
 			);
 			name = class;
+			sourceTree = "<group>";
+		};
+		88BEECBE17C49C7F00205FB7 /* DriverAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				88BEECBF17C49CE600205FB7 /* DriverBasicInfo.h */,
+				88BEECC017C49CE600205FB7 /* DriverBasicInfo.m */,
+				88BEECC517C49DBD00205FB7 /* DriverBasicInfoView.h */,
+				88BEECC617C49DBD00205FB7 /* DriverBasicInfoView.m */,
+				88BEECC817C4AB0E00205FB7 /* DriverBasicInfoAnnotation.h */,
+				88BEECC917C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m */,
+			);
+			name = DriverAnnotation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +467,10 @@
 				88AFF78F17C3643300DCDE7E /* tabbar-4@2x.png in Resources */,
 				88F3C88217C465B500F07127 /* contentSprarator.png in Resources */,
 				88F3C88317C465B500F07127 /* contentSprarator@2x.png in Resources */,
+				88F3C88617C48B1C00F07127 /* search-cell-accessory@2x.png in Resources */,
+				88F3C88717C48B1C00F07127 /* search-cell-avatar-shadow@2x.png in Resources */,
+				88F3C88D17C48CA700F07127 /* apple.jpg in Resources */,
+				88BEECB817C4984600205FB7 /* command.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +495,10 @@
 				88F3C86D17C44BDE00F07127 /* DriverInfoCell.m in Sources */,
 				88F3C87717C44FD300F07127 /* DPMeterView.m in Sources */,
 				88F3C87817C44FD300F07127 /* UIBezierPath+BasicShapes.m in Sources */,
+				88F3C89017C4929F00F07127 /* DriverInfo.m in Sources */,
+				88BEECC117C49CE600205FB7 /* DriverBasicInfo.m in Sources */,
+				88BEECC717C49DBD00205FB7 /* DriverBasicInfoView.m in Sources */,
+				88BEECCA17C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
