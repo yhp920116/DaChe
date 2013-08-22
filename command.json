@@ -1,24 +1,24 @@
 [{
     "name":"路飞",
     "commentScore":"0.8",
-    "latitude":"22.17108",
-    "longitude":"114.01990",
+    "latitude":"22.19108",
+    "longitude":"114.16990",
 },
 {
     "name":"娜美",
     "commentScore":"0.9",
-    "latitude":"22.13808",
-    "longitude":"114.07800",
+    "latitude":"22.20808",
+    "longitude":"114.10800",
 },
 {
     "name":"索隆",
     "commentScore":"1.0",
     "latitude":"22.16408",
-    "longitude":"114.03992",
+    "longitude":"114.19992",
 },
 {
     "name":"山治",
     "commentScore":"0.3",
-    "latitude":"22.12908",
-    "longitude":"114.05800",
+    "latitude":"22.19908",
+    "longitude":"114.15800",
 }]

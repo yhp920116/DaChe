@@ -29,7 +29,7 @@
     } else {
         _view.annotation = self;
     }
-    [self updateDriverBasicInfo:_driverBasicInfo animated:NO];
+    [self updateDriverBasicInfo:_driverBasicInfo animated:YES];
     return _view;
 }
 

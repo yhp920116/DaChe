@@ -97,17 +97,14 @@
             _mapView.showsUserLocation = YES;
             [self.view addSubview:_mapView];
 
-            
             [_mapView addAnnotations:_drivers];
             
-            CLLocationDegrees latitude = 22.1320;
-            CLLocationDegrees longitude = 114.0932;
+            CLLocationDegrees latitude = 22.2120;
+            CLLocationDegrees longitude = 114.1832;
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
             MKCoordinateSpan span = MKCoordinateSpanMake(0.12345, 0.1234);
             MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, span);
             [_mapView setRegion:region];
-            
-            
             
             break;
         }

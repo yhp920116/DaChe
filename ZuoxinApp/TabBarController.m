@@ -109,6 +109,8 @@
     }
     
     UIImageView *selectedView = [[UIImageView alloc] init];
+    [selectedView setFrame:CGRectMake(0, 0, 64, 49)];
+    [selectedView setImage:[[imagesDic objectForKey:@"selected"] objectAtIndex:0]];
     [_myTabBar addSubview:selectedView];
     
     _switchTabBarBtn = ^(NSUInteger tag){
