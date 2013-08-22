@@ -10,6 +10,12 @@
 		882256AA17C5B1550020FB45 /* DriverDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 882256A917C5B1550020FB45 /* DriverDetail.m */; };
 		882256AE17C5B63A0020FB45 /* CustomerCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 882256AD17C5B63A0020FB45 /* CustomerCommentCell.m */; };
 		882256BC17C5E5F30020FB45 /* renderimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 882256BB17C5E5F30020FB45 /* renderimg.png */; };
+		8883595217C5FD7D00668303 /* invite-backimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8883595117C5FD7D00668303 /* invite-backimage@2x.png */; };
+		8883595D17C6018100668303 /* invite-gift@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8883595817C6018100668303 /* invite-gift@2x.png */; };
+		8883595E17C6018100668303 /* invite-message@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8883595917C6018100668303 /* invite-message@2x.png */; };
+		8883595F17C6018100668303 /* invite-sina@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8883595A17C6018100668303 /* invite-sina@2x.png */; };
+		8883596017C6018100668303 /* invite-tencent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8883595B17C6018100668303 /* invite-tencent@2x.png */; };
+		8883596117C6018100668303 /* invite-weixin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8883595C17C6018100668303 /* invite-weixin@2x.png */; };
 		8897E9EA17C376B2002ECE90 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8897E9E917C376B2002ECE90 /* MapKit.framework */; };
 		88AFF72517C3615200DCDE7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AFF72417C3615200DCDE7E /* UIKit.framework */; };
 		88AFF72717C3615200DCDE7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AFF72617C3615200DCDE7E /* Foundation.framework */; };
@@ -67,6 +73,7 @@
 		88BEECC717C49DBD00205FB7 /* DriverBasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEECC617C49DBD00205FB7 /* DriverBasicInfoView.m */; };
 		88BEECCA17C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEECC917C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m */; };
 		88DD8DBF17C5F1DE006E2F13 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DD8DBE17C5F1DE006E2F13 /* CustomTextField.m */; };
+		88DD8DC317C5F60A006E2F13 /* ZuoxinReservationDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DD8DC217C5F60A006E2F13 /* ZuoxinReservationDetail.m */; };
 		88F3C86D17C44BDE00F07127 /* DriverInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */; };
 		88F3C87717C44FD300F07127 /* DPMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C87417C44FD300F07127 /* DPMeterView.m */; };
 		88F3C87817C44FD300F07127 /* UIBezierPath+BasicShapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C87617C44FD300F07127 /* UIBezierPath+BasicShapes.m */; };
@@ -87,6 +94,12 @@
 		882256AC17C5B63A0020FB45 /* CustomerCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerCommentCell.h; sourceTree = "<group>"; };
 		882256AD17C5B63A0020FB45 /* CustomerCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCommentCell.m; sourceTree = "<group>"; };
 		882256BB17C5E5F30020FB45 /* renderimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = renderimg.png; sourceTree = "<group>"; };
+		8883595117C5FD7D00668303 /* invite-backimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite-backimage@2x.png"; sourceTree = "<group>"; };
+		8883595817C6018100668303 /* invite-gift@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite-gift@2x.png"; sourceTree = "<group>"; };
+		8883595917C6018100668303 /* invite-message@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite-message@2x.png"; sourceTree = "<group>"; };
+		8883595A17C6018100668303 /* invite-sina@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite-sina@2x.png"; sourceTree = "<group>"; };
+		8883595B17C6018100668303 /* invite-tencent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite-tencent@2x.png"; sourceTree = "<group>"; };
+		8883595C17C6018100668303 /* invite-weixin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite-weixin@2x.png"; sourceTree = "<group>"; };
 		8897E9E917C376B2002ECE90 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		88AFF72017C3615200DCDE7E /* ZuoxinApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZuoxinApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88AFF72417C3615200DCDE7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -161,6 +174,8 @@
 		88BEECC917C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverBasicInfoAnnotation.m; sourceTree = "<group>"; };
 		88DD8DBD17C5F1DE006E2F13 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		88DD8DBE17C5F1DE006E2F13 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		88DD8DC117C5F60A006E2F13 /* ZuoxinReservationDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZuoxinReservationDetail.h; sourceTree = "<group>"; };
+		88DD8DC217C5F60A006E2F13 /* ZuoxinReservationDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZuoxinReservationDetail.m; sourceTree = "<group>"; };
 		88F3C86B17C44BDE00F07127 /* DriverInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverInfoCell.h; sourceTree = "<group>"; };
 		88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfoCell.m; sourceTree = "<group>"; };
 		88F3C87317C44FD300F07127 /* DPMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMeterView.h; sourceTree = "<group>"; };
@@ -294,6 +309,8 @@
 			children = (
 				88AFF7A617C3661900DCDE7E /* ZuoxinReservation.h */,
 				88AFF7A717C3661900DCDE7E /* ZuoxinReservation.m */,
+				88DD8DC117C5F60A006E2F13 /* ZuoxinReservationDetail.h */,
+				88DD8DC217C5F60A006E2F13 /* ZuoxinReservationDetail.m */,
 			);
 			name = "多人预约";
 			sourceTree = "<group>";
@@ -312,6 +329,12 @@
 		88AFF74D17C363F700DCDE7E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8883595817C6018100668303 /* invite-gift@2x.png */,
+				8883595917C6018100668303 /* invite-message@2x.png */,
+				8883595A17C6018100668303 /* invite-sina@2x.png */,
+				8883595B17C6018100668303 /* invite-tencent@2x.png */,
+				8883595C17C6018100668303 /* invite-weixin@2x.png */,
+				8883595117C5FD7D00668303 /* invite-backimage@2x.png */,
 				882256BB17C5E5F30020FB45 /* renderimg.png */,
 				88F3C88C17C48CA700F07127 /* apple.jpg */,
 				88F3C88417C48B1C00F07127 /* search-cell-accessory@2x.png */,
@@ -490,6 +513,12 @@
 				88F3C88D17C48CA700F07127 /* apple.jpg in Resources */,
 				88BEECB817C4984600205FB7 /* command.json in Resources */,
 				882256BC17C5E5F30020FB45 /* renderimg.png in Resources */,
+				8883595217C5FD7D00668303 /* invite-backimage@2x.png in Resources */,
+				8883595D17C6018100668303 /* invite-gift@2x.png in Resources */,
+				8883595E17C6018100668303 /* invite-message@2x.png in Resources */,
+				8883595F17C6018100668303 /* invite-sina@2x.png in Resources */,
+				8883596017C6018100668303 /* invite-tencent@2x.png in Resources */,
+				8883596117C6018100668303 /* invite-weixin@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +550,7 @@
 				882256AA17C5B1550020FB45 /* DriverDetail.m in Sources */,
 				882256AE17C5B63A0020FB45 /* CustomerCommentCell.m in Sources */,
 				88DD8DBF17C5F1DE006E2F13 /* CustomTextField.m in Sources */,
+				88DD8DC317C5F60A006E2F13 /* ZuoxinReservationDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

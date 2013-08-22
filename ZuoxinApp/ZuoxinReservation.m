@@ -12,6 +12,7 @@
 #import "UIBezierPath+BasicShapes.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CustomTextField.h"
+#import "ZuoxinReservationDetail.h"
 
 @interface ZuoxinReservation ()
 
@@ -30,7 +31,7 @@
 
 - (void)loadCustomBar
 {
-    self.backBtn.hidden = YES;
+    self.backBtn.hidden = NO;
     self.customBtn.hidden = YES;
     self.navTitleLabel.text = @"多人预约";
 }
@@ -115,7 +116,8 @@
 
 - (void)confirmBtn
 {
-    
+    ZuoxinReservationDetail *reservationDetail = [[ZuoxinReservationDetail alloc] init];
+    [self.navigationController pushViewController:reservationDetail animated:YES];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

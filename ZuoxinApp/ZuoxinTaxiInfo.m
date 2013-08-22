@@ -13,6 +13,7 @@
 #import "DPMeterView.h"
 #import "DriverBasicInfoAnnotation.h"
 #import "DriverDetail.h"
+#import "ZuoxinReservation.h"
 
 
 @interface ZuoxinTaxiInfo () <MKMapViewDelegate>{
@@ -211,7 +212,8 @@
 
 - (void)reservationBtn
 {
-    
+    ZuoxinReservation *reservation = [[ZuoxinReservation alloc] init];
+    [self.navigationController pushViewController:reservation animated:YES];
 }
 
 - (void)viewDidLoad

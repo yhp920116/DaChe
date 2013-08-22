@@ -8,6 +8,6 @@
 
 #import "BasicViewModel.h"
 
-@interface ZuoxinInvitation : BasicViewModel
+@interface ZuoxinInvitation : BasicViewModel<UITableViewDataSource,UITableViewDelegate>
 
 @end
