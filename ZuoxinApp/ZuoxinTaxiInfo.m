@@ -56,13 +56,6 @@
 {
     self.backBtn.hidden = YES;
     [self.customBtn setTitle:@"优惠卷" forState:UIControlStateNormal];
-    
-//    UIImage *listImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"search-list-button-normal@2x" ofType:@"png"] ];
-//    UIImage *listImg_s = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"search-list-button-selected@2x" ofType:@"png"]];
-//
-//    UIImage *mapImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"search-map-button-normal@2x" ofType:@"png"]];
-//
-//    UIImage *mapImg_s = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"search-map-button-selected@2x" ofType:@"png"]];
 
     UISegmentedControl *listAndMap = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"列表",@"地图",nil]];
     listAndMap.frame = CGRectMake(0, 0, 177, 24);
@@ -78,12 +71,12 @@
     switch (listAndMap.selectedSegmentIndex) {
         case 0:
         {
-            [self setTaxiInfoMode:TaxiInfoModeList];
+            self.taxiInfoMode = TaxiInfoModeList;
             break;
         }
         case 1:
         {
-            [self setTaxiInfoMode:TaxiInfoModeMap];
+            self.taxiInfoMode = TaxiInfoModeMap;
             break;
         }
     }
@@ -103,8 +96,11 @@
             _mapView.zoomEnabled = YES;
             _mapView.showsUserLocation = YES;
             [self.view addSubview:_mapView];
+
             
-            CLLocationDegrees latitude = 22.2320;
+            [_mapView addAnnotations:_drivers];
+            
+            CLLocationDegrees latitude = 22.1320;
             CLLocationDegrees longitude = 114.0932;
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
             MKCoordinateSpan span = MKCoordinateSpanMake(0.12345, 0.1234);
@@ -112,7 +108,7 @@
             [_mapView setRegion:region];
             
             
-            [_mapView addAnnotations:_drivers];
+            
             break;
         }
         case 1:
@@ -122,7 +118,7 @@
             taxiInfoTable.delegate = self;
             taxiInfoTable.dataSource = self;
             taxiInfoTable.showsVerticalScrollIndicator = NO;
-            taxiInfoTable.backgroundColor = [UIColor clearColor];
+            taxiInfoTable.backgroundColor = [UIColor whiteColor];
             [self.view addSubview:taxiInfoTable];
             break;
         }
@@ -138,8 +134,7 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if ([annotation conformsToProtocol:@protocol(DriverBasicInfoAnnotationProtocol)]) {
         return [((NSObject<DriverBasicInfoAnnotationProtocol> *)annotation) annotationViewInMap:mapView];
-    }
-    return nil;
+    }else return nil;
 }
 
 #pragma mark - TaxiTabel
@@ -188,6 +183,7 @@
     [super viewDidLoad];
     [self loadData];
 	[self loadCustomBar];
+    self.taxiInfoMode = TaxiInfoModeMap;
     
 }
 

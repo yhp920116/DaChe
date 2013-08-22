@@ -18,10 +18,10 @@ typedef NSUInteger TaxiInfoMode;
 
 @interface ZuoxinTaxiInfo : BasicViewModel<UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate>
 {
-    TaxiInfoMode _taxiInfoMode;
     MKMapView *_mapView;
 }
 
+@property(nonatomic, assign) TaxiInfoMode taxiInfoMode;
 @property(nonatomic, strong) MKMapView *mapView;
 
 - (void)setTaxiInfoMode:(TaxiInfoMode)taxiInfoMode;
