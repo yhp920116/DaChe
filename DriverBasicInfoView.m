@@ -10,6 +10,7 @@
 #import "DPMeterView.h"
 #import "UIBezierPath+BasicShapes.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DriverDetail.h"
 
 #define DriverBasicInfoViewWidth 87.0f
 #define DriverBasicInfoViewHeight 60.0f
@@ -60,15 +61,6 @@
     return self;
 }
 
-- (void)didSelectAnnotationViewInMap:(MKMapView *)mapView
-{
-    [mapView setCenterCoordinate:self.coordinate];
-}
-
-- (void)didDiselectAnnotationViewImMap:(MKMapView *)mapView
-{
-    
-}
 
 #pragma mark - Quartz 2D 
 

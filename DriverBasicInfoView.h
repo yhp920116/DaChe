@@ -10,14 +10,14 @@
 @class DPMeterView;
 
 
-@protocol DriverBasicInfoViewProtocol <NSObject>
+//@protocol DriverBasicInfoViewProtocol <NSObject>
+//
+//- (void)didSelectAnnotationViewInMap:(MKMapView *)mapView;
+//- (void)didDiselectAnnotationViewImMap:(MKMapView *)mapView;
+//
+//@end
 
-- (void)didSelectAnnotationViewInMap:(MKMapView *)mapView;
-- (void)didDiselectAnnotationViewImMap:(MKMapView *)mapView;
-
-@end
-
-@interface DriverBasicInfoView : MKAnnotationView<DriverBasicInfoViewProtocol>
+@interface DriverBasicInfoView : MKAnnotationView
 {
     UIButton *_disclosureBtn;
 }

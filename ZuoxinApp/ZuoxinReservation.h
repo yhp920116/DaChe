@@ -7,11 +7,11 @@
 //
 
 #import "BasicViewModel.h"
-@class DPMeterView;
 
-@interface ZuoxinReservation : BasicViewModel
-
-@property(nonatomic, strong) DPMeterView *starsView;
-
+@interface ZuoxinReservation : BasicViewModel<UITextFieldDelegate>
+{
+    UITextField *_phoneNumField;
+    UITextField *_verificationField;
+}
 
 @end

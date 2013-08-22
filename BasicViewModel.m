@@ -61,6 +61,11 @@
     [tabBarController tabBarHidden:hidden];
 }
 
+- (void)backBtn:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

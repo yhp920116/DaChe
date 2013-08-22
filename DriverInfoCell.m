@@ -77,6 +77,12 @@
         self.separatorLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 62, 320, 2)];
         [self.contentView addSubview:self.separatorLine];
         
+        //selectedBackgroundView
+        UIImage *renderImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"renderimg" ofType:@"png"]];
+        UIImageView *renderImgView = [[UIImageView alloc] initWithImage:renderImg];
+        self.selectedBackgroundView = renderImgView;
+        
+        
     }
     return self;
 }

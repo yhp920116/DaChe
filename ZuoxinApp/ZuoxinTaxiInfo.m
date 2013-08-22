@@ -154,12 +154,11 @@
     
 }
 
-- (void)didSelectAnnotationViewInMap:(MKMapView *)mapView;
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     DriverDetail *driverDetail = [[DriverDetail alloc] init];
-    [self.navigationController pushViewController:driverDetail animated:NO];
+    [self.navigationController pushViewController:driverDetail animated:YES];
 }
-
 
 #pragma mark - TaxiTabel
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -200,6 +199,12 @@
     cell.separatorLine.image = separator;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DriverDetail *driverDetail = [[DriverDetail alloc] init];
+    [self.navigationController pushViewController:driverDetail animated:YES];
 }
 
 #pragma mark - reservationBtn

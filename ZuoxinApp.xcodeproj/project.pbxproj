@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		882256AA17C5B1550020FB45 /* DriverDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 882256A917C5B1550020FB45 /* DriverDetail.m */; };
 		882256AE17C5B63A0020FB45 /* CustomerCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 882256AD17C5B63A0020FB45 /* CustomerCommentCell.m */; };
+		882256BC17C5E5F30020FB45 /* renderimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 882256BB17C5E5F30020FB45 /* renderimg.png */; };
 		8897E9EA17C376B2002ECE90 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8897E9E917C376B2002ECE90 /* MapKit.framework */; };
 		88AFF72517C3615200DCDE7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AFF72417C3615200DCDE7E /* UIKit.framework */; };
 		88AFF72717C3615200DCDE7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AFF72617C3615200DCDE7E /* Foundation.framework */; };
@@ -65,6 +66,7 @@
 		88BEECC117C49CE600205FB7 /* DriverBasicInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEECC017C49CE600205FB7 /* DriverBasicInfo.m */; };
 		88BEECC717C49DBD00205FB7 /* DriverBasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEECC617C49DBD00205FB7 /* DriverBasicInfoView.m */; };
 		88BEECCA17C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEECC917C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m */; };
+		88DD8DBF17C5F1DE006E2F13 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DD8DBE17C5F1DE006E2F13 /* CustomTextField.m */; };
 		88F3C86D17C44BDE00F07127 /* DriverInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */; };
 		88F3C87717C44FD300F07127 /* DPMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C87417C44FD300F07127 /* DPMeterView.m */; };
 		88F3C87817C44FD300F07127 /* UIBezierPath+BasicShapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C87617C44FD300F07127 /* UIBezierPath+BasicShapes.m */; };
@@ -84,6 +86,7 @@
 		882256A917C5B1550020FB45 /* DriverDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverDetail.m; sourceTree = "<group>"; };
 		882256AC17C5B63A0020FB45 /* CustomerCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerCommentCell.h; sourceTree = "<group>"; };
 		882256AD17C5B63A0020FB45 /* CustomerCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCommentCell.m; sourceTree = "<group>"; };
+		882256BB17C5E5F30020FB45 /* renderimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = renderimg.png; sourceTree = "<group>"; };
 		8897E9E917C376B2002ECE90 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		88AFF72017C3615200DCDE7E /* ZuoxinApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZuoxinApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88AFF72417C3615200DCDE7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -156,6 +159,8 @@
 		88BEECC617C49DBD00205FB7 /* DriverBasicInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverBasicInfoView.m; sourceTree = "<group>"; };
 		88BEECC817C4AB0E00205FB7 /* DriverBasicInfoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverBasicInfoAnnotation.h; sourceTree = "<group>"; };
 		88BEECC917C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverBasicInfoAnnotation.m; sourceTree = "<group>"; };
+		88DD8DBD17C5F1DE006E2F13 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		88DD8DBE17C5F1DE006E2F13 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		88F3C86B17C44BDE00F07127 /* DriverInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverInfoCell.h; sourceTree = "<group>"; };
 		88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfoCell.m; sourceTree = "<group>"; };
 		88F3C87317C44FD300F07127 /* DPMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMeterView.h; sourceTree = "<group>"; };
@@ -307,6 +312,7 @@
 		88AFF74D17C363F700DCDE7E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				882256BB17C5E5F30020FB45 /* renderimg.png */,
 				88F3C88C17C48CA700F07127 /* apple.jpg */,
 				88F3C88417C48B1C00F07127 /* search-cell-accessory@2x.png */,
 				88F3C88517C48B1C00F07127 /* search-cell-avatar-shadow@2x.png */,
@@ -368,6 +374,8 @@
 				88F3C87617C44FD300F07127 /* UIBezierPath+BasicShapes.m */,
 				88F3C88E17C4929F00F07127 /* DriverInfo.h */,
 				88F3C88F17C4929F00F07127 /* DriverInfo.m */,
+				88DD8DBD17C5F1DE006E2F13 /* CustomTextField.h */,
+				88DD8DBE17C5F1DE006E2F13 /* CustomTextField.m */,
 				88BEECBE17C49C7F00205FB7 /* DriverAnnotation */,
 			);
 			name = class;
@@ -481,6 +489,7 @@
 				88F3C88717C48B1C00F07127 /* search-cell-avatar-shadow@2x.png in Resources */,
 				88F3C88D17C48CA700F07127 /* apple.jpg in Resources */,
 				88BEECB817C4984600205FB7 /* command.json in Resources */,
+				882256BC17C5E5F30020FB45 /* renderimg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +520,7 @@
 				88BEECCA17C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m in Sources */,
 				882256AA17C5B1550020FB45 /* DriverDetail.m in Sources */,
 				882256AE17C5B63A0020FB45 /* CustomerCommentCell.m in Sources */,
+				88DD8DBF17C5F1DE006E2F13 /* CustomTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
