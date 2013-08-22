@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		882256AA17C5B1550020FB45 /* DriverDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 882256A917C5B1550020FB45 /* DriverDetail.m */; };
+		882256AE17C5B63A0020FB45 /* CustomerCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 882256AD17C5B63A0020FB45 /* CustomerCommentCell.m */; };
 		8897E9EA17C376B2002ECE90 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8897E9E917C376B2002ECE90 /* MapKit.framework */; };
 		88AFF72517C3615200DCDE7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AFF72417C3615200DCDE7E /* UIKit.framework */; };
 		88AFF72717C3615200DCDE7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AFF72617C3615200DCDE7E /* Foundation.framework */; };
@@ -78,6 +80,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		882256A817C5B1550020FB45 /* DriverDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverDetail.h; sourceTree = "<group>"; };
+		882256A917C5B1550020FB45 /* DriverDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverDetail.m; sourceTree = "<group>"; };
+		882256AC17C5B63A0020FB45 /* CustomerCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerCommentCell.h; sourceTree = "<group>"; };
+		882256AD17C5B63A0020FB45 /* CustomerCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCommentCell.m; sourceTree = "<group>"; };
 		8897E9E917C376B2002ECE90 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		88AFF72017C3615200DCDE7E /* ZuoxinApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZuoxinApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88AFF72417C3615200DCDE7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -292,6 +298,8 @@
 			children = (
 				88AFF7A317C365DA00DCDE7E /* ZuoxinTaxiInfo.h */,
 				88AFF7A417C365DA00DCDE7E /* ZuoxinTaxiInfo.m */,
+				882256A817C5B1550020FB45 /* DriverDetail.h */,
+				882256A917C5B1550020FB45 /* DriverDetail.m */,
 			);
 			name = "寻求代驾";
 			sourceTree = "<group>";
@@ -352,6 +360,8 @@
 				88AFF7B917C36A8300DCDE7E /* CustomBtn.m */,
 				88F3C86B17C44BDE00F07127 /* DriverInfoCell.h */,
 				88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */,
+				882256AC17C5B63A0020FB45 /* CustomerCommentCell.h */,
+				882256AD17C5B63A0020FB45 /* CustomerCommentCell.m */,
 				88F3C87317C44FD300F07127 /* DPMeterView.h */,
 				88F3C87417C44FD300F07127 /* DPMeterView.m */,
 				88F3C87517C44FD300F07127 /* UIBezierPath+BasicShapes.h */,
@@ -499,6 +509,8 @@
 				88BEECC117C49CE600205FB7 /* DriverBasicInfo.m in Sources */,
 				88BEECC717C49DBD00205FB7 /* DriverBasicInfoView.m in Sources */,
 				88BEECCA17C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m in Sources */,
+				882256AA17C5B1550020FB45 /* DriverDetail.m in Sources */,
+				882256AE17C5B63A0020FB45 /* CustomerCommentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

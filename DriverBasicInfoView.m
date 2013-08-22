@@ -48,10 +48,10 @@
         [self addSubview:_driverNameLabel];
         
         //dpmeterView
-        _commentView = [[DPMeterView alloc] initWithFrame:CGRectMake(3.5, 20, DriverBasicInfoViewWidth, 20)];
+        _commentView = [[DPMeterView alloc] initWithFrame:CGRectMake(3.5, 20, 80, 20)];
         [_commentView setShape:[UIBezierPath stars:5 shapeInFrame:CGRectMake(0, 0, 80, 20)].CGPath];
         [_commentView setTrackTintColor:[UIColor lightGrayColor]];
-        [_commentView setProgressTintColor:[UIColor darkGrayColor]];
+//        [_commentView setProgressTintColor:[UIColor darkGrayColor]];
         _commentView.progressTintColor = [UIColor colorWithRed:255/255.f green:199/255.f blue:87/255.f alpha:1.f];
         [_commentView setGradientOrientationAngle:2*M_PI];
         [self addSubview:_commentView];

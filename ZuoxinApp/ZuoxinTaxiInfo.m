@@ -12,9 +12,12 @@
 #import "DriverInfoCell.h"
 #import "DPMeterView.h"
 #import "DriverBasicInfoAnnotation.h"
+#import "DriverDetail.h"
+
 
 @interface ZuoxinTaxiInfo () <MKMapViewDelegate>{
     NSMutableArray *_drivers;
+    MKCircle *_userCircle;
 }
 
 @end
@@ -55,8 +58,9 @@
 - (void)loadCustomBar
 {
     self.backBtn.hidden = YES;
-    [self.customBtn setTitle:@"优惠卷" forState:UIControlStateNormal];
-
+    [self.customBtn setTitle:@"多人预约" forState:UIControlStateNormal];
+    [self.customBtn addTarget:self action:@selector(reservationBtn) forControlEvents:UIControlEventTouchUpInside];
+    
     UISegmentedControl *listAndMap = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"列表",@"地图",nil]];
     listAndMap.frame = CGRectMake(0, 0, 177, 24);
     listAndMap.segmentedControlStyle = UISegmentedControlStyleBar;
@@ -96,8 +100,6 @@
             _mapView.zoomEnabled = YES;
             _mapView.showsUserLocation = YES;
             [self.view addSubview:_mapView];
-
-            [_mapView addAnnotations:_drivers];
             
             CLLocationDegrees latitude = 22.2120;
             CLLocationDegrees longitude = 114.1832;
@@ -105,6 +107,11 @@
             MKCoordinateSpan span = MKCoordinateSpanMake(0.12345, 0.1234);
             MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, span);
             [_mapView setRegion:region];
+
+            _userCircle = [MKCircle circleWithCenterCoordinate:coordinate radius:8000];
+            
+            [_mapView addAnnotations:_drivers];
+            [_mapView addOverlay:_userCircle];
             
             break;
         }
@@ -133,6 +140,26 @@
         return [((NSObject<DriverBasicInfoAnnotationProtocol> *)annotation) annotationViewInMap:mapView];
     }else return nil;
 }
+
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MKCircle class]]) {
+        MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:overlay];
+        circleView.lineWidth = 1;
+        circleView.strokeColor = [UIColor blueColor];
+        circleView.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.2];
+        return circleView;
+    }
+    return nil;
+    
+}
+
+- (void)didSelectAnnotationViewInMap:(MKMapView *)mapView;
+{
+    DriverDetail *driverDetail = [[DriverDetail alloc] init];
+    [self.navigationController pushViewController:driverDetail animated:NO];
+}
+
 
 #pragma mark - TaxiTabel
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -173,6 +200,13 @@
     cell.separatorLine.image = separator;
     
     return cell;
+}
+
+#pragma mark - reservationBtn
+
+- (void)reservationBtn
+{
+    
 }
 
 - (void)viewDidLoad
