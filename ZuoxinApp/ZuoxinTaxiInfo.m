@@ -14,6 +14,10 @@
 #import "DriverBasicInfoAnnotation.h"
 #import "DriverDetail.h"
 #import "ZuoxinReservation.h"
+#import "zuoxin.h"
+#import "THTTPClient.h"
+#import "TBinaryProtocol.h"
+
 
 
 @interface ZuoxinTaxiInfo () <MKMapViewDelegate>{
@@ -55,6 +59,17 @@
     }
     
 }
+
+//- (void)loadData
+//{
+//    THTTPClient *transport = [[THTTPClient alloc] initWithURL:[NSURL URLWithString:@"http://mdm.wxchina.com:90/anyurl.thrift"]];
+//    TBinaryProtocol *protocol = [[TBinaryProtocol alloc] initWithTransport:transport strictRead:YES strictWrite:YES];
+//    DriverServiceClient *server = [[DriverServiceClient alloc] initWithProtocol:protocol];
+//    
+//    //获取用户当前位置附近的司机
+//    NSMutableArray *drivers = [server finddrivers:_mapView.userLocation.coordinate.longitude latitude:_mapView.userLocation.coordinate.latitude count:5 distance:6000];
+//
+//}
 
 - (void)loadCustomBar
 {
