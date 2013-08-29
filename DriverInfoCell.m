@@ -56,34 +56,34 @@
         
         self.driverSexLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 30, 50, 12)];
         self.driverSexLabel.font = [UIFont systemFontOfSize:12.0f];
-        self.driverSexLabel.textColor = [UIColor blackColor];
+        self.driverSexLabel.textColor = [UIColor grayColor];
         self.driverSexLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.driverSexLabel
          ];
         
         self.nativePlaceLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 30, 70, 12)];
         self.nativePlaceLabel.font = [UIFont systemFontOfSize:12.0f];
-        self.nativePlaceLabel.textColor = [UIColor blackColor];
+        self.nativePlaceLabel.textColor = [UIColor grayColor];
         self.nativePlaceLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.nativePlaceLabel];
 
         
         self.driveTimesLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 50, 70, 12)];
         self.driveTimesLabel.font = [UIFont systemFontOfSize:12.0f];
-        self.driveTimesLabel.textColor = [UIColor blackColor];
+        self.driveTimesLabel.textColor = [UIColor grayColor];
         self.driveTimesLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.driveTimesLabel];
         
         self.driveAgeLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 50, 60, 12)];
         self.driveAgeLabel.font = [UIFont systemFontOfSize:12.0f];
-        self.driveAgeLabel.textColor = [UIColor blackColor];
+        self.driveAgeLabel.textColor = [UIColor grayColor];
         self.driveAgeLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.driveAgeLabel];
 
 
         self.distanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 50, 90, 12)];
         self.distanceLabel.font = [UIFont systemFontOfSize:12.0f];
-        self.distanceLabel.textColor = [UIColor blackColor];
+        self.distanceLabel.textColor = [UIColor grayColor];
         self.distanceLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.distanceLabel];
         
