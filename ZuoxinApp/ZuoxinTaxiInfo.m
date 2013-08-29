@@ -19,6 +19,7 @@
 #import "TBinaryProtocol.h"
 #import "Reachability.h"
 #import <QuartzCore/QuartzCore.h>
+#import "FlatRoundedImageView.h"
 
 
 @interface ZuoxinTaxiInfo () <MKMapViewDelegate>{
@@ -35,10 +36,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 460-49)];
-        _taxiInfoTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 460-49) style:UITableViewStylePlain];
+        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 460-49-44)];
+        _taxiInfoTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 460-49-44) style:UITableViewStylePlain];
             }
-        _MainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460-49)];
+        _MainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460-49-44)];
     return self;
 }
 
@@ -47,8 +48,7 @@
     [super viewDidLoad];
     [self loadCustomBar];
     [self loadData];
-    [self loadMapView];
-    [self loadTableListView];
+
 }
 
 - (void)loadData
@@ -62,18 +62,31 @@
         CLLocationDegrees latitude = 22.17102;
         CLLocationDegrees longitude = 114.16930;
         _driverArr = [self.server finddrivers:longitude latitude:latitude count:8 distance:8000];
-        
+    
         for (NSDictionary *driverDic in _driverArr) {
-            DriverBasicInfo *driverBasicInfo = [[DriverBasicInfo alloc] init];
-            driverBasicInfo.driverName = [driverDic valueForKey:@"name"];
-            driverBasicInfo.commentScore = 0.8;
             
-            CLLocationDegrees longitude = [[driverDic valueForKey:@"longitude"] doubleValue];
-            CLLocationDegrees latitude = [[driverDic valueForKey:@"latitude"] doubleValue];
+            DriverBasicInfo *driverBasicInfo = [[DriverBasicInfo alloc] init];
+            
+            //Tips:driverBasicInfo error may cause annotation disappear!
+            driverBasicInfo.driverName = [driverDic valueForKey:@"name"];
+            driverBasicInfo.commentScore = [[driverDic valueForKey:@"score"] floatValue]/1000.0;
+            NSLog(@"%f",driverBasicInfo.commentScore);
+            driverBasicInfo.driverPhoneNum = [driverDic valueForKey:@"mobile"];
+            driverBasicInfo.driverAge = [driverDic valueForKey:@"driveage"];
+            driverBasicInfo.driverCount = [driverDic valueForKey:@"drivercount"];
+            driverBasicInfo.driverSex = [[driverDic valueForKey:@"sex"] integerValue];
+            driverBasicInfo.driverNativePlace = [driverDic valueForKey:@"province"];
+            CLLocationDegrees longitude = [[driverDic valueForKey:@"longitude"] floatValue];
+            CLLocationDegrees latitude = [[driverDic valueForKey:@"latitude"] floatValue];
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
             driverBasicInfo.coordinate = coordinate;
+            
             [_drivers addObject:[[DriverBasicInfoAnnotation alloc] initWithDriverBasicInfo:driverBasicInfo]];
         }
+        
+        //3 loadMapView and TableListView
+        [self loadMapView];
+        [self loadTableListView];
         
         self.taxiInfoMode = TaxiInfoModeMap;
     }
@@ -86,29 +99,28 @@
     self.backBtn.hidden = YES;
     [self.customBtn setTitle:@"多人预约" forState:UIControlStateNormal];
     [self.customBtn addTarget:self action:@selector(reservationBtn) forControlEvents:UIControlEventTouchUpInside];
+
+    UIButton *mapAndListBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    mapAndListBtn.frame = CGRectMake(0, 0, 50, 14);
+    mapAndListBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+    [mapAndListBtn setTitle:@"地图" forState:UIControlStateNormal];
+    [mapAndListBtn addTarget:self action:@selector(mapAndListBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    UISegmentedControl *listAndMap = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"列表",@"地图",nil]];
-    listAndMap.frame = CGRectMake(0, 0, 177, 24);
-    listAndMap.segmentedControlStyle = UISegmentedControlStyleBar;
-    listAndMap.selectedSegmentIndex = 1;
-    [listAndMap addTarget:self action:@selector(segmentSwitch:) forControlEvents:UIControlEventValueChanged];
-    self.navigationItem.titleView =  listAndMap;
+    UIBarButtonItem *mapAndListBtnItem = [[UIBarButtonItem alloc] initWithCustomView:mapAndListBtn]
+    ;
+    self.navigationItem.leftBarButtonItem = mapAndListBtnItem;
 }
 
-- (void)segmentSwitch:(id)sender
+- (void)mapAndListBtnClick:(UIButton *)btn
 {
-    UISegmentedControl *listAndMap = (UISegmentedControl *)sender;
-    switch (listAndMap.selectedSegmentIndex) {
-        case 0:
-        {
-            self.taxiInfoMode = TaxiInfoModeList;
-            break;
-        }
-        case 1:
-        {
-            self.taxiInfoMode = TaxiInfoModeMap;
-            break;
-        }
+    if ([[btn titleForState:UIControlStateNormal] isEqualToString:@"地图"]) {
+        [btn setTitle:@"列表" forState:UIControlStateNormal];
+        self.taxiInfoMode = TaxiInfoModeList;
+    }
+    else
+    {
+        [btn setTitle:@"地图" forState:UIControlStateNormal];
+        self.taxiInfoMode = TaxiInfoModeMap;
     }
 }
 
@@ -166,8 +178,8 @@
     MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, span);
     [_mapView setRegion:region];
     
-    _userCircle = [MKCircle circleWithCenterCoordinate:coordinate radius:1000];
-    
+    _userCircle = [MKCircle circleWithCenterCoordinate:coordinate radius:500];
+
     [_mapView addAnnotation:[_drivers objectAtIndex:0]];
     [_mapView addOverlay:_userCircle];
 }
@@ -177,7 +189,8 @@
     _taxiInfoTable.delegate = self;
     _taxiInfoTable.dataSource = self;
     _taxiInfoTable.showsVerticalScrollIndicator = NO;
-    _taxiInfoTable.backgroundColor = [UIColor whiteColor];
+    _taxiInfoTable.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+
     
     if (_refreshHeaderView == nil) {
         _refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0, 0-_taxiInfoTable.frame.size.height, _taxiInfoTable.frame.size.width, _taxiInfoTable.frame.size.height)];
@@ -195,7 +208,8 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if ([annotation conformsToProtocol:@protocol(DriverBasicInfoAnnotationProtocol)]) {
         return [((NSObject<DriverBasicInfoAnnotationProtocol> *)annotation) annotationViewInMap:mapView];
-    }else return nil;
+    }
+    return nil;
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
@@ -218,14 +232,32 @@
 }
 
 #pragma mark - TaxiTabel
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [_drivers count];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 64;
+    return 80;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_driverArr count];
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -238,22 +270,58 @@
     }
     UIImage *accessoryArrow = [UIImage imageNamed:@"search-cell-accessory@2x.png"];
     UIImage *thumbnail = [UIImage imageNamed:@"apple.jpg"];
-    UIImage *separator = [UIImage imageNamed:@"contentSprarator.png"];
+
+    DriverBasicInfoAnnotation *annotation = [_drivers objectAtIndex:indexPath.section];
+    DriverBasicInfo *driverBasicInfo = annotation.driverBasicInfo;
     
     cell.thumbnail.image = thumbnail;
-    cell.driverNameLabel.text = [[_driverArr objectAtIndex:indexPath.row] valueForKey:@"name"];
-    cell.distanceLabel.text = [cell.distanceLabel.text stringByAppendingFormat:@"10公里"];
-    cell.driveTimesLabel.text = [cell.driveTimesLabel.text stringByAppendingFormat:@"%@",[[_driverArr objectAtIndex:indexPath.row] valueForKey:@"drivercount"]];
+    [cell.starsProcess add:driverBasicInfo.commentScore];
+    
+    cell.driverNameLabel.text = driverBasicInfo.driverName;
+    cell.distanceLabel.text = [NSString stringWithFormat:@"距离：12米"];
+    cell.driveTimesLabel.text = [NSString stringWithFormat:@"代驾%@次",driverBasicInfo.driverCount];
     // set startProcess property
     
     
-    cell.driverStatusLabel.text = [[[_driverArr objectAtIndex:indexPath.row] valueForKey:@"state"] stringValue];
-    cell.driverStatusLabel.textColor = [UIColor redColor];
+    //driver status
+    switch (driverBasicInfo.driverState) {
+        case 0:
+        {
+            cell.driverStatusLabel.text = @"空闲状态";
+            cell.driverStatusLabel.textColor = [UIColor greenColor];
+            break;
+        }
+        case 1:
+        {
+            cell.driverStatusLabel.text = @"服务中";
+            cell.driverStatusLabel.textColor = [UIColor redColor];
+            break;
+        }
+        case 2:
+        {
+            cell.driverStatusLabel.text = @"休息中";
+            cell.driverStatusLabel.textColor = [UIColor grayColor];
+            break;
+        }
+    }
     
-    cell.driveAgeLabel.text = [cell.driveAgeLabel.text stringByAppendingFormat:@"%@",[[_driverArr objectAtIndex:indexPath.row] valueForKey:@"driveage"]];
-    cell.nativePlaceLabel.text = [cell.nativePlaceLabel.text stringByAppendingFormat:@"%@",[[_driverArr objectAtIndex:indexPath.row] valueForKey:@"province"]];
+    //driver sex
+    switch (driverBasicInfo.driverSex) {
+        case 0:
+        {
+            cell.driverSexLabel.text = @"性别:男";
+            break;
+        }
+        case 1:
+        {
+            cell.driverSexLabel.text = @"性别:女";
+            break;
+        }
+    }
+    
+    cell.driveAgeLabel.text = [NSString stringWithFormat:@"驾龄%@年",driverBasicInfo.driverAge];
+    cell.nativePlaceLabel.text = [NSString stringWithFormat:@"籍贯：%@",driverBasicInfo.driverNativePlace ];
     cell.arrowView.image = accessoryArrow;
-    cell.separatorLine.image = separator;
     
     return cell;
 }
@@ -261,6 +329,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DriverDetail *driverDetail = [[DriverDetail alloc] init];
+    driverDetail.driverBasicInfo = [[_drivers objectAtIndex:indexPath.section] driverBasicInfo];
     [self.navigationController pushViewController:driverDetail animated:YES];
 }
 

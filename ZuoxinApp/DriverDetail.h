@@ -8,12 +8,15 @@
 
 #import "BasicViewModel.h"
 #import "EGORefreshTableHeaderView.h"
+#import "DriverBasicInfo.h"
 
 @interface DriverDetail : BasicViewModel<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate>
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
 }
+
+@property(nonatomic,strong) DriverBasicInfo *driverBasicInfo;
 
 - (void)reloadTableViewDataSource;
 - (void)doneLoadingTableViewData;

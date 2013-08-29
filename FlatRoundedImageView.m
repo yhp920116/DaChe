@@ -23,7 +23,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.layer.borderColor = self.borderColor.CGColor;
     self.layer.borderWidth = 1.0f;
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = CGRectGetWidth(self.bounds)/2;

@@ -8,18 +8,19 @@
 
 #import <UIKit/UIKit.h>
 @class DPMeterView;
+@class FlatRoundedImageView;
 
 @interface DriverInfoCell : UITableViewCell
 
-@property(nonatomic, strong) UIImageView *thumbnail;
+@property(nonatomic, strong) FlatRoundedImageView *thumbnail;
 @property(nonatomic, strong) UILabel *driverNameLabel;
 @property(nonatomic, strong) UILabel *distanceLabel;
 @property(nonatomic, strong) UILabel *driveTimesLabel;
 @property(nonatomic, strong) UILabel *driverStatusLabel;
 @property(nonatomic, strong) UILabel *driveAgeLabel;
+@property(nonatomic, strong) UILabel *driverSexLabel;
 @property(nonatomic, strong) DPMeterView *starsProcess;
 @property(nonatomic, strong) UIImageView *arrowView;
 @property(nonatomic, strong) UILabel *nativePlaceLabel;
-@property(nonatomic, strong) UIImageView *separatorLine;
 
 @end

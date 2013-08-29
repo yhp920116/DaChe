@@ -11,6 +11,9 @@
 #import "CustomBtn.h"
 #import "DriverInfoCell.h"
 #import "CustomerCommentCell.h"
+#import "FlatRoundedImageView.h"
+#import "DPMeterView.h"
+#import "UIBezierPath+BasicShapes.h"
 
 #define isCustomerCommentTable [tableView isEqual:(UITableView*)[self.view viewWithTag:999]]
 #define isDriverBasicInfoTable [tableView isEqual:(UITableView *)[self.view viewWithTag:998]]
@@ -26,6 +29,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.driverBasicInfo = [[DriverBasicInfo alloc] init];
     }
     return self;
 }
@@ -38,7 +42,7 @@
 
 - (void)loadDriverInfo
 {
-    UITableView *driverInfoTable = [[UITableView alloc] initWithFrame:CGRectMake(10, 10, 300, 64) style:UITableViewStylePlain];
+    UITableView *driverInfoTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, 320, 80) style:UITableViewStylePlain];
     driverInfoTable.tag = 998;
     driverInfoTable.dataSource = self;
     driverInfoTable.delegate = self;
@@ -50,7 +54,7 @@
 
 - (void)loadCustomerComment
 {
-    UITableView *customerCommentTable = [[UITableView alloc] initWithFrame:CGRectMake(10, 84, 300, 460-84) style:UITableViewStylePlain];
+    UITableView *customerCommentTable = [[UITableView alloc] initWithFrame:CGRectMake(10, 104, 300, 460-84) style:UITableViewStylePlain];
     customerCommentTable.tag = 999;
     customerCommentTable.dataSource = self;
     customerCommentTable.delegate = self;
@@ -81,7 +85,7 @@
 {
     
     if (isDriverBasicInfoTable) {
-        return 64;
+        return 80;
     }
     else if (isCustomerCommentTable){
         return 80;
@@ -111,22 +115,56 @@
         }
         UIImage *accessoryArrow = [UIImage imageNamed:@"search-cell-accessory@2x.png"];
         UIImage *thumbnail = [UIImage imageNamed:@"apple.jpg"];
-        UIImage *separator = [UIImage imageNamed:@"contentSprarator.png"];
         
         cell.thumbnail.image = thumbnail;
-        cell.driverNameLabel.text = @"路飞";
-        cell.distanceLabel.text = [cell.distanceLabel.text stringByAppendingFormat:@"10公里"];
-        cell.driveTimesLabel.text = [cell.driveTimesLabel.text stringByAppendingFormat:@"100次"];
+        [cell.starsProcess add:self.driverBasicInfo.commentScore];
+        
+        cell.driverNameLabel.text = self.driverBasicInfo.driverName;
+        cell.distanceLabel.text = [NSString stringWithFormat:@"距离：12米"];
+        cell.driveTimesLabel.text = [NSString stringWithFormat:@"代驾%@次",self.driverBasicInfo.driverCount];
         // set startProcess property
         
         
-        cell.driverStatusLabel.text = @"冒险中";
-        cell.driverStatusLabel.textColor = [UIColor redColor];
+        //driver status
+        switch (self.driverBasicInfo.driverState) {
+            case 0:
+            {
+                cell.driverStatusLabel.text = @"空闲状态";
+                cell.driverStatusLabel.textColor = [UIColor greenColor];
+                break;
+            }
+            case 1:
+            {
+                cell.driverStatusLabel.text = @"服务中";
+                cell.driverStatusLabel.textColor = [UIColor redColor];
+                break;
+            }
+            case 2:
+            {
+                cell.driverStatusLabel.text = @"休息中";
+                cell.driverStatusLabel.textColor = [UIColor grayColor];
+                break;
+            }
+        }
         
-        cell.driveAgeLabel.text = [cell.driveAgeLabel.text stringByAppendingFormat:@"10年"];
-        cell.nativePlaceLabel.text = [cell.nativePlaceLabel.text stringByAppendingFormat:@"新世界"];
+        //driver sex
+        switch (self.driverBasicInfo.driverSex) {
+            case 0:
+            {
+                cell.driverSexLabel.text = @"性别:男";
+                break;
+            }
+            case 1:
+            {
+                cell.driverSexLabel.text = @"性别:女";
+                break;
+            }
+        }
+        
+        cell.driveAgeLabel.text = [NSString stringWithFormat:@"驾龄%@年",self.driverBasicInfo.driverAge];
+        cell.nativePlaceLabel.text = [NSString stringWithFormat:@"籍贯：%@",self.driverBasicInfo.driverNativePlace ];
         cell.arrowView.image = accessoryArrow;
-        cell.separatorLine.image = separator;
+
         return cell;
     }
     else if (isCustomerCommentTable)

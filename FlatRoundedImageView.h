@@ -12,4 +12,6 @@
 
 + (FlatRoundedImageView *)FlatRoundedImageViewWithImage:(UIImage *)image;
 
+@property(nonatomic,strong) UIColor *borderColor;
+
 @end

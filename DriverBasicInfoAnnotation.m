@@ -45,6 +45,51 @@
     if (_view){
         _view.coordinate = self.coordinate;
         _view.driverNameLabel.text = driverBasicInfo.driverName;
+        [_view.commentView add:driverBasicInfo.commentScore];
+        
+        //driver status
+        switch (driverBasicInfo.driverState) {
+            case 0:
+            {
+                _view.driverStatusLabel.text = @"空闲状态";
+                _view.driverStatusLabel.textColor = [UIColor greenColor];
+                break;
+            }
+            case 1:
+            {
+                _view.driverStatusLabel.text = @"服务中";
+                _view.driverStatusLabel.textColor = [UIColor redColor];
+                break;
+            }
+            case 2:
+            {
+                _view.driverStatusLabel.text = @"休息中";
+                _view.driverStatusLabel.textColor = [UIColor grayColor];
+                break;
+            }
+        }
+        
+        //driver sex
+        switch (driverBasicInfo.driverSex) {
+            case 0:
+            {
+                _view.driverSexLabel.text = @"性别:男";
+                break;
+            }
+            case 1:
+            {
+                _view.driverSexLabel.text = @"性别:女";
+                break;
+            }
+        }
+        
+        //driver native place
+        
+        _view.nativePlaceLabel.text = [NSString stringWithFormat:@"籍贯：%@",_driverBasicInfo.driverNativePlace];
+        _view.driverTimesLabel.text = [NSString stringWithFormat:@"代驾%@次",_driverBasicInfo.driverCount];
+        _view.driverAgeLabel.text = [NSString stringWithFormat:@"驾龄%@年",_driverBasicInfo.driverAge];
+        _view.distanceLabel.text = [NSString stringWithFormat:@"距离12米"];
+        
         [_view.commentView add:driverBasicInfo.commentScore animated:YES];
     }
 }

@@ -34,6 +34,7 @@
 @property(nonatomic, strong) UILabel *driverAgeLabel;
 @property(nonatomic, strong) UILabel *distanceLabel;
 
+
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation;
 
 @end

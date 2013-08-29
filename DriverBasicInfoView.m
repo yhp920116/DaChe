@@ -42,6 +42,7 @@
         
         //flatRoundedImageView
         _flatImageView = [FlatRoundedImageView FlatRoundedImageViewWithImage:[UIImage imageNamed:@"cn.png"]];
+        _flatImageView.borderColor = [UIColor whiteColor];
         _flatImageView.frame = CGRectMake(15, 10, 45, 45);
         [self addSubview:_flatImageView];
         
@@ -66,8 +67,6 @@
         _driverStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 40, 50, 14)];
         _driverStatusLabel.font = [UIFont systemFontOfSize:12.0f];
         _driverStatusLabel.backgroundColor = [UIColor clearColor];
-        _driverStatusLabel.textColor = [UIColor greenColor];
-        _driverStatusLabel.text = @"空闲状态";
         [self addSubview:_driverStatusLabel];
         
         //driverSexLabel
@@ -75,7 +74,6 @@
         _driverSexLabel.font = [UIFont systemFontOfSize:12.0f];
         _driverSexLabel.backgroundColor = [UIColor clearColor];
         _driverSexLabel.textColor = [UIColor whiteColor];
-        _driverSexLabel.text = @"性别:男";
         [self addSubview:_driverSexLabel];
         
         //nativePlaceLabel
@@ -83,12 +81,10 @@
         _nativePlaceLabel.font = [UIFont systemFontOfSize:12.0f];
         _nativePlaceLabel.backgroundColor = [UIColor clearColor];
         _nativePlaceLabel.textColor = [UIColor whiteColor];
-        _nativePlaceLabel.text = @"籍贯:新世界";
         [self addSubview:_nativePlaceLabel];
         
         //driverTimesLabel
         _driverTimesLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, 84, 14)];
-        _driverTimesLabel.text = @"代驾123次";
         _driverTimesLabel.font = [UIFont systemFontOfSize:14.0f];
         _driverTimesLabel.backgroundColor = [UIColor clearColor];
         _driverTimesLabel.textColor = [UIColor whiteColor];
@@ -96,7 +92,6 @@
         
         //driverAgeLabel
         _driverAgeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15+84, 70, 84, 14)];
-        _driverAgeLabel.text = @"驾龄12年";
         _driverAgeLabel.font = [UIFont systemFontOfSize:14.0f];
         _driverAgeLabel.backgroundColor = [UIColor clearColor];
         _driverAgeLabel.textColor = [UIColor whiteColor];
@@ -104,7 +99,7 @@
         
         //
         _distanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(15+84+84, 70, 84, 14)];
-        _distanceLabel.text = @"距离100米";
+
         _distanceLabel.font = [UIFont systemFontOfSize:14.0f];
         _distanceLabel.backgroundColor = [UIColor clearColor];
         _distanceLabel.textColor = [UIColor whiteColor];

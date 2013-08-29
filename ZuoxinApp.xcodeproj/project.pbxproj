@@ -83,7 +83,6 @@
 		88BEECCA17C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEECC917C4AB0E00205FB7 /* DriverBasicInfoAnnotation.m */; };
 		88DD8DBF17C5F1DE006E2F13 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DD8DBE17C5F1DE006E2F13 /* CustomTextField.m */; };
 		88DD8DC317C5F60A006E2F13 /* ZuoxinReservationDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DD8DC217C5F60A006E2F13 /* ZuoxinReservationDetail.m */; };
-		88EEADAA17C70BA7008C4EB3 /* zuoxin.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEADA917C70BA7008C4EB3 /* zuoxin.m */; };
 		88EEADFC17C722F2008C4EB3 /* TApplicationException.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEADF517C722F2008C4EB3 /* TApplicationException.m */; };
 		88EEADFD17C722F2008C4EB3 /* TException.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEADF717C722F2008C4EB3 /* TException.m */; };
 		88EEADFE17C722F2008C4EB3 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEADFB17C722F2008C4EB3 /* TSharedProcessorFactory.m */; };
@@ -96,6 +95,7 @@
 		88EEAE1A17C7231C008C4EB3 /* TNSStreamTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEAE1117C7231C008C4EB3 /* TNSStreamTransport.m */; };
 		88EEAE1B17C7231C008C4EB3 /* TSocketClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEAE1317C7231C008C4EB3 /* TSocketClient.m */; };
 		88EEAE1C17C7231C008C4EB3 /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EEAE1617C7231C008C4EB3 /* TTransportException.m */; };
+		88F0D5A317CED9E90027F078 /* zuoxin.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F0D5A217CED9E90027F078 /* zuoxin.m */; };
 		88F3C86D17C44BDE00F07127 /* DriverInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */; };
 		88F3C87717C44FD300F07127 /* DPMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C87417C44FD300F07127 /* DPMeterView.m */; };
 		88F3C87817C44FD300F07127 /* UIBezierPath+BasicShapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F3C87617C44FD300F07127 /* UIBezierPath+BasicShapes.m */; };
@@ -216,8 +216,6 @@
 		88DD8DBE17C5F1DE006E2F13 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		88DD8DC117C5F60A006E2F13 /* ZuoxinReservationDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZuoxinReservationDetail.h; sourceTree = "<group>"; };
 		88DD8DC217C5F60A006E2F13 /* ZuoxinReservationDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZuoxinReservationDetail.m; sourceTree = "<group>"; };
-		88EEADA817C70BA7008C4EB3 /* zuoxin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zuoxin.h; sourceTree = "<group>"; };
-		88EEADA917C70BA7008C4EB3 /* zuoxin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zuoxin.m; sourceTree = "<group>"; };
 		88EEADF217C722F2008C4EB3 /* TProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProcessor.h; sourceTree = "<group>"; };
 		88EEADF317C722F2008C4EB3 /* TProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProcessorFactory.h; sourceTree = "<group>"; };
 		88EEADF417C722F2008C4EB3 /* TApplicationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TApplicationException.h; sourceTree = "<group>"; };
@@ -249,6 +247,8 @@
 		88EEAE1417C7231C008C4EB3 /* TTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTransport.h; sourceTree = "<group>"; };
 		88EEAE1517C7231C008C4EB3 /* TTransportException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTransportException.h; sourceTree = "<group>"; };
 		88EEAE1617C7231C008C4EB3 /* TTransportException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTransportException.m; sourceTree = "<group>"; };
+		88F0D5A117CED9E90027F078 /* zuoxin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zuoxin.h; sourceTree = "<group>"; };
+		88F0D5A217CED9E90027F078 /* zuoxin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zuoxin.m; sourceTree = "<group>"; };
 		88F3C86B17C44BDE00F07127 /* DriverInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverInfoCell.h; sourceTree = "<group>"; };
 		88F3C86C17C44BDE00F07127 /* DriverInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfoCell.m; sourceTree = "<group>"; };
 		88F3C87317C44FD300F07127 /* DPMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMeterView.h; sourceTree = "<group>"; };
@@ -531,8 +531,8 @@
 		88EEADA617C70B86008C4EB3 /* gen-cocoa */ = {
 			isa = PBXGroup;
 			children = (
-				88EEADA817C70BA7008C4EB3 /* zuoxin.h */,
-				88EEADA917C70BA7008C4EB3 /* zuoxin.m */,
+				88F0D5A117CED9E90027F078 /* zuoxin.h */,
+				88F0D5A217CED9E90027F078 /* zuoxin.m */,
 			);
 			name = "gen-cocoa";
 			sourceTree = "<group>";
@@ -763,7 +763,6 @@
 				882256AE17C5B63A0020FB45 /* CustomerCommentCell.m in Sources */,
 				88DD8DBF17C5F1DE006E2F13 /* CustomTextField.m in Sources */,
 				88DD8DC317C5F60A006E2F13 /* ZuoxinReservationDetail.m in Sources */,
-				88EEADAA17C70BA7008C4EB3 /* zuoxin.m in Sources */,
 				88EEADFC17C722F2008C4EB3 /* TApplicationException.m in Sources */,
 				88EEADFD17C722F2008C4EB3 /* TException.m in Sources */,
 				88EEADFE17C722F2008C4EB3 /* TSharedProcessorFactory.m in Sources */,
@@ -781,6 +780,7 @@
 				887CF9DA17CB0107002C370D /* CollapseClick.m in Sources */,
 				88FF66AB17CC596E00A632C9 /* Reachability.m in Sources */,
 				88FB315817CDDCD600568456 /* FlatRoundedImageView.m in Sources */,
+				88F0D5A317CED9E90027F078 /* zuoxin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,7 +855,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZuoxinApp/ZuoxinApp-Prefix.pch";
 				INFOPLIST_FILE = "ZuoxinApp/ZuoxinApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-objC",
 					"-all_load",
@@ -876,7 +876,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZuoxinApp/ZuoxinApp-Prefix.pch";
 				INFOPLIST_FILE = "ZuoxinApp/ZuoxinApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-objC",
 					"-all_load",

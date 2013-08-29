@@ -13,6 +13,7 @@
 
 @protocol DriverBasicInfoAnnotationProtocol <NSObject>
 
+@required
 - (MKAnnotationView *)annotationViewInMap:(MKMapView *)mapView;
 
 @end
