@@ -57,6 +57,13 @@
     customerCommentTable.scrollEnabled = YES;
     customerCommentTable.showsVerticalScrollIndicator = NO;
     
+    if (_refreshHeaderView == nil) {
+        _refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0, -customerCommentTable.frame.size.height, customerCommentTable.frame.size.width, customerCommentTable.frame.size.height)];
+        _refreshHeaderView.delegate = self;
+        [customerCommentTable addSubview:_refreshHeaderView];
+        [_refreshHeaderView refreshLastUpdatedDate];
+    }
+    
     //tableHeaderView
     UIButton *callDriver = [UIButton buttonWithType:UIButtonTypeCustom];
     callDriver.frame = CGRectMake(0, 0, 300, 40);
@@ -134,10 +141,51 @@
         cell.commentDateLabel.text = @"2013-1-1";
         
         cell.commentDetailLabel.text = @"这家伙服务态度真是好，驾驶技术也很稳定，最重要的是送到目的地不收钱走人，深藏功与名！";
-        cell.fitCommentDetailText(cell.commentDetailLabel.text);
+        CGSize size = CGSizeMake(280, 1000);
+        CGSize textSize = [cell.commentDetailLabel.text sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:size lineBreakMode:NSLineBreakByCharWrapping];
+        cell.commentDetailLabel.frame = CGRectMake(10, 34, textSize.width, textSize.height);
+        
         return cell;
     }
     return nil;
+}
+
+#pragma mark - EGORefreshHeaderView
+- (void)reloadTableViewDataSource
+{
+    _reloading = YES;
+}
+
+- (void)doneLoadingTableViewData
+{
+    _reloading = NO;
+    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:(UITableView*)[self.view viewWithTag:999]];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView *)view
+{
+    [self reloadTableViewDataSource];
+    [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView *)view
+{
+    return _reloading;
+}
+
+- (NSDate *)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView *)view
+{
+    return [NSDate date];
 }
 
 #pragma mark - callDriverBtn

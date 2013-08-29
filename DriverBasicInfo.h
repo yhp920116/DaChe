@@ -12,6 +12,7 @@
 @interface DriverBasicInfo : NSObject
 
 @property(nonatomic, strong) NSString *driverName;
+@property(nonatomic, strong) NSString *thumbnailURL;
 @property(nonatomic, assign) float commentScore;
 @property(nonatomic, assign) CLLocationCoordinate2D coordinate;
 

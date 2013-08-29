@@ -13,6 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "CustomTextField.h"
 #import "ZuoxinReservationDetail.h"
+#import "TabBarController.h"
 
 @interface ZuoxinReservation ()
 
@@ -29,6 +30,12 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    TabBarController *tabBarController = (TabBarController*)self.tabBarController;
+    [tabBarController tabBarHidden:NO];
+}
+
 - (void)loadCustomBar
 {
     self.backBtn.hidden = NO;
@@ -38,9 +45,12 @@
 
 - (void)loadMainView
 {
+    //backgroundView
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"login_bg.jpg"]];
+
     //inputPhoneNumView
     UIView *inputPhoneNumView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 300, 120)];
-    inputPhoneNumView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.2];
+    inputPhoneNumView.backgroundColor = [UIColor whiteColor];
     inputPhoneNumView.layer.borderWidth = 1.0f;
     inputPhoneNumView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [self.view addSubview:inputPhoneNumView];
@@ -64,7 +74,7 @@
     
     UIButton *verificationCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     verificationCodeBtn.frame = CGRectMake(6, 70, 288, 30);
-    verificationCodeBtn.backgroundColor = [UIColor lightGrayColor];
+    verificationCodeBtn.backgroundColor = [UIColor orangeColor];
     verificationCodeBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
     [verificationCodeBtn setTitle:@"获取手机验证码" forState:UIControlStateNormal];
     [verificationCodeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -73,7 +83,7 @@
     
     //VerificationView
     UIView *verificationView = [[UIView alloc] initWithFrame:CGRectMake(10, 140, 300, 120)];
-    verificationView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.2];
+    verificationView.backgroundColor = [UIColor whiteColor];
     verificationView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     verificationView.layer.borderWidth = 1.0;
     [self.view addSubview:verificationView];
@@ -96,7 +106,7 @@
     
     UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     confirmBtn.frame = CGRectMake(6, 70, 288, 30);
-    confirmBtn.backgroundColor = [UIColor lightGrayColor];
+    confirmBtn.backgroundColor = [UIColor orangeColor];
     confirmBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
     [confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
     [confirmBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

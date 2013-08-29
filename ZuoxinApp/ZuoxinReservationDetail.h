@@ -7,9 +7,11 @@
 //
 
 #import "BasicViewModel.h"
+#import "CollapseClick.h"
 
-@interface ZuoxinReservationDetail : BasicViewModel<UITextFieldDelegate>
+@interface ZuoxinReservationDetail : BasicViewModel<UITextFieldDelegate,CollapseClickDelegate>
 {
     UITextField *_phoneNumField;
+    CollapseClick *_myCollapseClick;
 }
 @end

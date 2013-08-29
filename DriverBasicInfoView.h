@@ -8,23 +8,31 @@
 
 #import <MapKit/MapKit.h>
 @class DPMeterView;
+@class FlatRoundedImageView;
 
 
-//@protocol DriverBasicInfoViewProtocol <NSObject>
-//
-//- (void)didSelectAnnotationViewInMap:(MKMapView *)mapView;
-//- (void)didDiselectAnnotationViewImMap:(MKMapView *)mapView;
-//
-//@end
+@protocol DriverBasicInfoViewProtocol <NSObject>
 
-@interface DriverBasicInfoView : MKAnnotationView
+- (void)didSelectAnnotationViewInMap:(MKMapView *)mapView;
+- (void)didDiselectAnnotationViewImMap:(MKMapView *)mapView;
+
+@end
+
+@interface DriverBasicInfoView : MKAnnotationView<DriverBasicInfoViewProtocol>
 {
     UIButton *_disclosureBtn;
 }
 
 @property(nonatomic, readwrite) CLLocationCoordinate2D coordinate;
-@property(nonatomic, strong) UILabel *driverNameLabel;
 @property(nonatomic, strong) DPMeterView *commentView;
+@property(nonatomic, strong) FlatRoundedImageView *flatImageView;
+@property(nonatomic, strong) UILabel *driverNameLabel;
+@property(nonatomic, strong) UILabel *driverStatusLabel;
+@property(nonatomic, strong) UILabel *driverSexLabel;
+@property(nonatomic, strong) UILabel *nativePlaceLabel;
+@property(nonatomic, strong) UILabel *driverTimesLabel;
+@property(nonatomic, strong) UILabel *driverAgeLabel;
+@property(nonatomic, strong) UILabel *distanceLabel;
 
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation;
 

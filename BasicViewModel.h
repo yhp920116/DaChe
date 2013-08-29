@@ -9,13 +9,20 @@
 #import <UIKit/UIKit.h>
 @class BackBtn;
 @class CustomBtn;
+@class DriverServiceClient;
 
 @interface BasicViewModel : UIViewController
 
 @property(nonatomic, strong) BackBtn *backBtn;
 @property(nonatomic, strong) CustomBtn *customBtn;
 @property(nonatomic, strong) UILabel *navTitleLabel;
+@property(nonatomic, strong) DriverServiceClient *server;
+
 
 - (void)setTabBarHidden:(BOOL)hidden;
+//internet connected
+- (BOOL)connected;
+
+
 
 @end

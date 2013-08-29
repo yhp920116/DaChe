@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 @class DPMeterView;
-typedef void(^fitCommentDetailText)(NSString *text);
 
 @interface CustomerCommentCell : UITableViewCell
 
@@ -17,6 +16,5 @@ typedef void(^fitCommentDetailText)(NSString *text);
 @property(nonatomic, strong) UILabel *commentDateLabel;
 @property(nonatomic, strong) UILabel *commentDetailLabel;
 
-@property(nonatomic, copy) fitCommentDetailText fitCommentDetailText;
 
 @end

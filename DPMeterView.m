@@ -409,7 +409,7 @@
     
     if (animated)
     {
-        NSTimeInterval duration = 0.5;
+        NSTimeInterval duration = 0.25;
         [UIView animateWithDuration:duration animations:^{
             CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"locations"];
             animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];

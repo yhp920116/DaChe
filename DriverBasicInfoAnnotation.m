@@ -42,7 +42,7 @@
         _coordinate = driverBasicInfo.coordinate;
     }
     
-    if (_view) {
+    if (_view){
         _view.coordinate = self.coordinate;
         _view.driverNameLabel.text = driverBasicInfo.driverName;
         [_view.commentView add:driverBasicInfo.commentScore animated:YES];

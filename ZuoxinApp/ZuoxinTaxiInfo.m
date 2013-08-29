@@ -17,7 +17,8 @@
 #import "zuoxin.h"
 #import "THTTPClient.h"
 #import "TBinaryProtocol.h"
-
+#import "Reachability.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface ZuoxinTaxiInfo () <MKMapViewDelegate>{
@@ -34,42 +35,51 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-    }
+        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 460-49)];
+        _taxiInfoTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 460-49) style:UITableViewStylePlain];
+            }
+        _MainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 460-49)];
     return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self loadCustomBar];
+    [self loadData];
+    [self loadMapView];
+    [self loadTableListView];
 }
 
 - (void)loadData
 {
-    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"command" ofType:@"json"]];
-    NSArray *drivers = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    _drivers = [[NSMutableArray alloc] initWithCapacity:8];
-    
-    for (NSDictionary *driverDic in drivers) {
-        DriverBasicInfo *driverBasicInfo = [[DriverBasicInfo alloc] init];
-        driverBasicInfo.driverName = [driverDic objectForKey:@"name"];
-        driverBasicInfo.commentScore = [[driverDic objectForKey:@"commentScore"] floatValue];
+    if ([self connected]) {
         
-        CLLocationDegrees latitude = [[driverDic objectForKey:@"latitude"] doubleValue];
-        CLLocationDegrees longitude = [[driverDic objectForKey:@"longitude"] doubleValue];
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-        driverBasicInfo.coordinate = coordinate;
-
-        [_drivers addObject:[[DriverBasicInfoAnnotation alloc] initWithDriverBasicInfo:driverBasicInfo]];
+        //1
+        _drivers = [[NSMutableArray alloc] initWithCapacity:8];
+        
+        //2
+        CLLocationDegrees latitude = 22.17102;
+        CLLocationDegrees longitude = 114.16930;
+        _driverArr = [self.server finddrivers:longitude latitude:latitude count:8 distance:8000];
+        
+        for (NSDictionary *driverDic in _driverArr) {
+            DriverBasicInfo *driverBasicInfo = [[DriverBasicInfo alloc] init];
+            driverBasicInfo.driverName = [driverDic valueForKey:@"name"];
+            driverBasicInfo.commentScore = 0.8;
+            
+            CLLocationDegrees longitude = [[driverDic valueForKey:@"longitude"] doubleValue];
+            CLLocationDegrees latitude = [[driverDic valueForKey:@"latitude"] doubleValue];
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+            driverBasicInfo.coordinate = coordinate;
+            [_drivers addObject:[[DriverBasicInfoAnnotation alloc] initWithDriverBasicInfo:driverBasicInfo]];
+        }
+        
+        self.taxiInfoMode = TaxiInfoModeMap;
     }
-    
+    else self.taxiInfoMode = TaxiInfoModeUnconnected;
 }
 
-//- (void)loadData
-//{
-//    THTTPClient *transport = [[THTTPClient alloc] initWithURL:[NSURL URLWithString:@"http://mdm.wxchina.com:90/anyurl.thrift"]];
-//    TBinaryProtocol *protocol = [[TBinaryProtocol alloc] initWithTransport:transport strictRead:YES strictWrite:YES];
-//    DriverServiceClient *server = [[DriverServiceClient alloc] initWithProtocol:protocol];
-//    
-//    //获取用户当前位置附近的司机
-//    NSMutableArray *drivers = [server finddrivers:_mapView.userLocation.coordinate.longitude latitude:_mapView.userLocation.coordinate.latitude count:5 distance:6000];
-//
-//}
 
 - (void)loadCustomBar
 {
@@ -110,44 +120,75 @@
     switch (_taxiInfoMode) {
         case 0:
         {
-            _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 460-49)];
-            _mapView.delegate = self;
-            _mapView.scrollEnabled = YES;
-            _mapView.zoomEnabled = YES;
-            _mapView.showsUserLocation = YES;
-            [self.view addSubview:_mapView];
-            
-            CLLocationDegrees latitude = 22.2120;
-            CLLocationDegrees longitude = 114.1832;
-            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-            MKCoordinateSpan span = MKCoordinateSpanMake(0.12345, 0.1234);
-            MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, span);
-            [_mapView setRegion:region];
-
-            _userCircle = [MKCircle circleWithCenterCoordinate:coordinate radius:8000];
-            
-            [_mapView addAnnotations:_drivers];
-            [_mapView addOverlay:_userCircle];
-            
+            _MainView = nil;
+            _MainView = _mapView;
             break;
         }
         case 1:
         {
-            UITableView *taxiInfoTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 460-49) style:UITableViewStylePlain];
-            taxiInfoTable.tag = 999;
-            taxiInfoTable.delegate = self;
-            taxiInfoTable.dataSource = self;
-            taxiInfoTable.showsVerticalScrollIndicator = NO;
-            taxiInfoTable.backgroundColor = [UIColor whiteColor];
-            [self.view addSubview:taxiInfoTable];
+            _MainView = nil;
+            _MainView = _taxiInfoTable;
             break;
         }
         case 2:
         {
+            UILabel *label = [[UILabel alloc] init];
+            label.font = [UIFont systemFontOfSize:16.0f];
+            label.textColor = [UIColor orangeColor];
+            CGSize size = CGSizeMake(280, 1000);
+            label.text = @"糟糕啦！你的网络出现问题，我们无法定位你的位置，你可以检查下自己的网络情况，如果需要我们的服务，可以致电222222";
+            CGSize textSize = [label.text sizeWithFont:label.font constrainedToSize:size lineBreakMode:NSLineBreakByCharWrapping];
+            label.numberOfLines = 0;
+            label.frame = CGRectMake(20, 20, textSize.width, textSize.height);
+            [self.view addSubview:label];
             break;
         }
-
     }
+    
+    [self.view addSubview:_MainView];
+
+    
+}
+
+- (void)loadMapView
+{
+    _mapView.delegate = self;
+    _mapView.scrollEnabled = YES;
+    _mapView.zoomEnabled = YES;
+    _mapView.showsUserLocation = YES;
+    
+    //            CLLocationDegrees latitude = 22.15102;
+    //            CLLocationDegrees longitude = 114.13930;
+    CLLocationDegrees latitude = 23.14423;
+    CLLocationDegrees longitude = 113.327631;
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.01345, 0.01234);
+    MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, span);
+    [_mapView setRegion:region];
+    
+    _userCircle = [MKCircle circleWithCenterCoordinate:coordinate radius:1000];
+    
+    [_mapView addAnnotation:[_drivers objectAtIndex:0]];
+    [_mapView addOverlay:_userCircle];
+}
+
+- (void)loadTableListView
+{
+    _taxiInfoTable.delegate = self;
+    _taxiInfoTable.dataSource = self;
+    _taxiInfoTable.showsVerticalScrollIndicator = NO;
+    _taxiInfoTable.backgroundColor = [UIColor whiteColor];
+    
+    if (_refreshHeaderView == nil) {
+        _refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0, 0-_taxiInfoTable.frame.size.height, _taxiInfoTable.frame.size.width, _taxiInfoTable.frame.size.height)];
+        _refreshHeaderView.delegate = self;
+        [_taxiInfoTable addSubview:_refreshHeaderView];
+        
+        //1 it will call egoRefreshTableHeaderDataSourceLastUpdated method
+        [_refreshHeaderView refreshLastUpdatedDate];
+    }
+
+    
 }
 
 #pragma mark - MapView
@@ -184,7 +225,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return [_driverArr count];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -200,17 +241,17 @@
     UIImage *separator = [UIImage imageNamed:@"contentSprarator.png"];
     
     cell.thumbnail.image = thumbnail;
-    cell.driverNameLabel.text = @"路飞";
+    cell.driverNameLabel.text = [[_driverArr objectAtIndex:indexPath.row] valueForKey:@"name"];
     cell.distanceLabel.text = [cell.distanceLabel.text stringByAppendingFormat:@"10公里"];
-    cell.driveTimesLabel.text = [cell.driveTimesLabel.text stringByAppendingFormat:@"100次"];
+    cell.driveTimesLabel.text = [cell.driveTimesLabel.text stringByAppendingFormat:@"%@",[[_driverArr objectAtIndex:indexPath.row] valueForKey:@"drivercount"]];
     // set startProcess property
     
     
-    cell.driverStatusLabel.text = @"冒险中";
+    cell.driverStatusLabel.text = [[[_driverArr objectAtIndex:indexPath.row] valueForKey:@"state"] stringValue];
     cell.driverStatusLabel.textColor = [UIColor redColor];
     
-    cell.driveAgeLabel.text = [cell.driveAgeLabel.text stringByAppendingFormat:@"10年"];
-    cell.nativePlaceLabel.text = [cell.nativePlaceLabel.text stringByAppendingFormat:@"新世界"];
+    cell.driveAgeLabel.text = [cell.driveAgeLabel.text stringByAppendingFormat:@"%@",[[_driverArr objectAtIndex:indexPath.row] valueForKey:@"driveage"]];
+    cell.nativePlaceLabel.text = [cell.nativePlaceLabel.text stringByAppendingFormat:@"%@",[[_driverArr objectAtIndex:indexPath.row] valueForKey:@"province"]];
     cell.arrowView.image = accessoryArrow;
     cell.separatorLine.image = separator;
     
@@ -223,21 +264,56 @@
     [self.navigationController pushViewController:driverDetail animated:YES];
 }
 
+#pragma mark - EGORefreshHeaderView
+
+//更新数据时使用的方法
+- (void)reloadTableViewDataSource
+{
+    _reloading = YES;
+}
+
+- (void)doneLoadingTableViewData
+{
+    _reloading = NO;
+    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:_taxiInfoTable];
+}
+
+//2 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView 
+{
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView *)view
+{
+    [self reloadTableViewDataSource];
+    [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+}
+
+//2-1 由于scroll是一个过程，所以它会重复调用几次，基于UIScroll
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView *)view
+{
+    return _reloading;
+}
+
+//1 更新date
+- (NSDate *)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView *)view
+{
+    return [NSDate date];
+}
+
+
 #pragma mark - reservationBtn
 
 - (void)reservationBtn
 {
     ZuoxinReservation *reservation = [[ZuoxinReservation alloc] init];
     [self.navigationController pushViewController:reservation animated:YES];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self loadData];
-	[self loadCustomBar];
-    self.taxiInfoMode = TaxiInfoModeMap;
-    
 }
 
 - (void)didReceiveMemoryWarning

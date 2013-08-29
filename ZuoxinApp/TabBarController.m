@@ -75,7 +75,7 @@
 
 - (void)loadCustomTabBar
 {
-//    [self setTabBarHidden:YES];
+    [self setTabBarHidden:YES];
     
     _myTabBar = [[UIImageView alloc] initWithFrame:CGRectMake(0, 480-49, 320, 49)];
     UIImage *tabBarBg = [UIImage imageNamed:@"tabbar-background@2x.png"];

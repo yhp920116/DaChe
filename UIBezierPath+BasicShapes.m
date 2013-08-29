@@ -160,7 +160,7 @@
         // get the star shape
         UIBezierPath* startPath = [UIBezierPath starShape:babyFrame];
         // move it to the desired location
-        [startPath applyTransform:CGAffineTransformTranslate(CGAffineTransformIdentity, i*w, 0)];
+        [startPath applyTransform:CGAffineTransformTranslate(CGAffineTransformIdentity, i*w,0)];
         // add the path
         [bezierPath appendPath:startPath];
     }

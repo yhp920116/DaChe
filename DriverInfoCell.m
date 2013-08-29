@@ -21,7 +21,7 @@
         self.thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(4, 4, 40, 52)];
         [self.contentView addSubview:self.thumbnail];
         
-        self.driverNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(54, 8, 48, 14)];
+        self.driverNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(54, 8, 68, 14)];
         self.driverNameLabel.font = [UIFont systemFontOfSize:16.0f];
         self.driverNameLabel.textColor = [UIColor blackColor];
         self.driverNameLabel.backgroundColor = [UIColor clearColor];
@@ -54,6 +54,7 @@
         [self.contentView addSubview:self.driveAgeLabel];
         
         self.starsProcess = [[DPMeterView alloc] initWithFrame:CGRectMake(220, 4, 80, 20)];
+        [self.starsProcess setMeterType:DPMeterTypeLinearHorizontal];
         [self.starsProcess setShape:[UIBezierPath stars:5 shapeInFrame:CGRectMake(10, 20, 80, 20)].CGPath];
         [self.starsProcess setTrackTintColor:[UIColor lightGrayColor]];
         

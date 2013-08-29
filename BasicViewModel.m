@@ -1,7 +1,7 @@
 //
 //  BasicViewModel.m
 //  ZuoxinApp
-//
+//  http://211.155.27.214:82/anyurl.thrift
 //  Created by 新工厂 on 13-8-20.
 //  Copyright (c) 2013年 Zuoxin.com. All rights reserved.
 //
@@ -10,6 +10,10 @@
 #import "BackBtn.h"
 #import "CustomBtn.h"
 #import "TabBarController.h"
+#import "zuoxin.h"
+#import "THTTPClient.h"
+#import "TBinaryProtocol.h"
+#import "Reachability.h"
 
 @interface BasicViewModel ()
 
@@ -24,6 +28,34 @@
         // Custom initialization
     }
     return self;
+}
+
+- (BOOL)connected
+{
+    Reachability *reachability = [Reachability reachabilityWithHostname:@"www.baidu.com"];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return !(networkStatus == NotReachable);
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self connectThriftServer];
+    [self loadCustomNavBar];
+	// Do any additional setup after loading the view.
+}
+
+
+#pragma mark - check internet status
+
+- (void)connectThriftServer
+{
+    if ([self connected]) {
+        THTTPClient *transport = [[THTTPClient alloc] initWithURL:[NSURL URLWithString:@"http://211.155.27.214:82/anyurl.thrift"]];
+        TBinaryProtocol *protocol = [[TBinaryProtocol alloc] initWithTransport:transport];
+        self.server = [[DriverServiceClient alloc] initWithProtocol:protocol];
+
+    }
 }
 
 - (void)loadCustomNavBar
@@ -64,13 +96,6 @@
 - (void)backBtn:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self loadCustomNavBar];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

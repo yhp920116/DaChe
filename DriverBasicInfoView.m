@@ -11,9 +11,10 @@
 #import "UIBezierPath+BasicShapes.h"
 #import <QuartzCore/QuartzCore.h>
 #import "DriverDetail.h"
+#import "FlatRoundedImageView.h"
 
-#define DriverBasicInfoViewWidth 87.0f
-#define DriverBasicInfoViewHeight 60.0f
+#define DriverBasicInfoViewWidth 87.0f * 3
+#define DriverBasicInfoViewHeight 60.0f * 2
 #define DriverBasicInfoViewVerticalOffset 34.0f
 #define  Arror_height 15
 #define kDropCompressAmount 0.1
@@ -39,28 +40,80 @@
         self.backgroundColor = [UIColor clearColor];
         self.centerOffset = CGPointMake(0, -DriverBasicInfoViewVerticalOffset);
         
+        //flatRoundedImageView
+        _flatImageView = [FlatRoundedImageView FlatRoundedImageViewWithImage:[UIImage imageNamed:@"cn.png"]];
+        _flatImageView.frame = CGRectMake(15, 10, 45, 45);
+        [self addSubview:_flatImageView];
+        
         //driverNameLabel
-        _driverNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, DriverBasicInfoViewWidth, 14)];
+        _driverNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 15, 50, 14)];
         _driverNameLabel.font = [UIFont systemFontOfSize:14.0f];
         _driverNameLabel.backgroundColor = [UIColor clearColor];
-        _driverNameLabel.textAlignment = NSTextAlignmentCenter;
-        _driverNameLabel.textColor = [UIColor blackColor];
+        _driverNameLabel.textColor = [UIColor whiteColor];
         _driverNameLabel.alpha = 1;
         [self addSubview:_driverNameLabel];
         
         //dpmeterView
-        _commentView = [[DPMeterView alloc] initWithFrame:CGRectMake(3.5, 20, 80, 20)];
+        _commentView = [[DPMeterView alloc] initWithFrame:CGRectMake(150, 10, 80, 20)];
+        [_commentView setMeterType:DPMeterTypeLinearHorizontal];
         [_commentView setShape:[UIBezierPath stars:5 shapeInFrame:CGRectMake(0, 0, 80, 20)].CGPath];
         [_commentView setTrackTintColor:[UIColor lightGrayColor]];
-//        [_commentView setProgressTintColor:[UIColor darkGrayColor]];
         _commentView.progressTintColor = [UIColor colorWithRed:255/255.f green:199/255.f blue:87/255.f alpha:1.f];
         [_commentView setGradientOrientationAngle:2*M_PI];
         [self addSubview:_commentView];
+        
+        //driverStatusLabel
+        _driverStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 40, 50, 14)];
+        _driverStatusLabel.font = [UIFont systemFontOfSize:12.0f];
+        _driverStatusLabel.backgroundColor = [UIColor clearColor];
+        _driverStatusLabel.textColor = [UIColor greenColor];
+        _driverStatusLabel.text = @"空闲状态";
+        [self addSubview:_driverStatusLabel];
+        
+        //driverSexLabel
+        _driverSexLabel = [[UILabel alloc] initWithFrame:CGRectMake(135, 40, 50, 12)];
+        _driverSexLabel.font = [UIFont systemFontOfSize:12.0f];
+        _driverSexLabel.backgroundColor = [UIColor clearColor];
+        _driverSexLabel.textColor = [UIColor whiteColor];
+        _driverSexLabel.text = @"性别:男";
+        [self addSubview:_driverSexLabel];
+        
+        //nativePlaceLabel
+        _nativePlaceLabel = [[UILabel alloc] initWithFrame:CGRectMake(185, 40, 75, 12)];
+        _nativePlaceLabel.font = [UIFont systemFontOfSize:12.0f];
+        _nativePlaceLabel.backgroundColor = [UIColor clearColor];
+        _nativePlaceLabel.textColor = [UIColor whiteColor];
+        _nativePlaceLabel.text = @"籍贯:新世界";
+        [self addSubview:_nativePlaceLabel];
+        
+        //driverTimesLabel
+        _driverTimesLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, 84, 14)];
+        _driverTimesLabel.text = @"代驾123次";
+        _driverTimesLabel.font = [UIFont systemFontOfSize:14.0f];
+        _driverTimesLabel.backgroundColor = [UIColor clearColor];
+        _driverTimesLabel.textColor = [UIColor whiteColor];
+        [self addSubview:_driverTimesLabel];
+        
+        //driverAgeLabel
+        _driverAgeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15+84, 70, 84, 14)];
+        _driverAgeLabel.text = @"驾龄12年";
+        _driverAgeLabel.font = [UIFont systemFontOfSize:14.0f];
+        _driverAgeLabel.backgroundColor = [UIColor clearColor];
+        _driverAgeLabel.textColor = [UIColor whiteColor];
+        [self addSubview:_driverAgeLabel];
+        
+        //
+        _distanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(15+84+84, 70, 84, 14)];
+        _distanceLabel.text = @"距离100米";
+        _distanceLabel.font = [UIFont systemFontOfSize:14.0f];
+        _distanceLabel.backgroundColor = [UIColor clearColor];
+        _distanceLabel.textColor = [UIColor whiteColor];
+        [self addSubview:_distanceLabel];
+        
         [self didMoveToSuperview];
     }
     return self;
 }
-
 
 #pragma mark - Quartz 2D 
 
@@ -68,8 +121,7 @@
 {
 	
     CGContextSetLineWidth(context, 2.0);
-    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
-    
+    [[[UIColor blackColor] colorWithAlphaComponent:.5] setFill];
     [self getDrawPath:context];
     CGContextFillPath(context);
     
@@ -140,6 +192,16 @@
     group.fillMode = kCAFillModeForwards;
     
     [self.layer addAnimation:group forKey:nil];
+}
+
+- (void)didSelectAnnotationViewInMap:(MKMapView *)mapView
+{
+    NSLog(@"slected");
+}
+
+- (void)didDiselectAnnotationViewImMap:(MKMapView *)mapView
+{
+    
 }
 
 @end

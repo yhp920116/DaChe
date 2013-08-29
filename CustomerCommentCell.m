@@ -18,6 +18,7 @@
     if (self) {
         //commentView
         self.commentView = [[DPMeterView alloc] initWithFrame:CGRectMake(10, 10, 80, 20)];
+        [self.commentView setMeterType:DPMeterTypeLinearHorizontal];
         [self.commentView setShape:[UIBezierPath stars:5 shapeInFrame:CGRectMake(10, 20, 80, 20)].CGPath];
         [self.commentView setTrackTintColor:[UIColor lightGrayColor]];
         
@@ -41,17 +42,14 @@
         [self.contentView addSubview:self.commentDateLabel];
         
         //
-        CGSize size = CGSizeMake(280, 1000);
+        
         
         self.commentDetailLabel = [[UILabel alloc] init];
         self.commentDetailLabel.font = [UIFont systemFontOfSize:14.0f];
         self.commentDetailLabel.textColor = [UIColor blackColor];
         self.commentDetailLabel.backgroundColor = [UIColor clearColor];
         self.commentDetailLabel.numberOfLines = 0;
-        self.fitCommentDetailText = ^(NSString *text){
-            CGSize textSize = [text sizeWithFont:self.commentDetailLabel.font constrainedToSize:size lineBreakMode:NSLineBreakByCharWrapping];
-            self.commentDetailLabel.frame = CGRectMake(10, 34, textSize.width, textSize.height);
-        };
+       
         [self.contentView addSubview:self.commentDetailLabel];
         
         
