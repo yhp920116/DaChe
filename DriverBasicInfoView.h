@@ -7,32 +7,16 @@
 //
 
 #import <MapKit/MapKit.h>
-@class DPMeterView;
-@class FlatRoundedImageView;
-
-
-@protocol DriverBasicInfoViewProtocol <NSObject>
-
-- (void)didSelectAnnotationViewInMap:(MKMapView *)mapView;
-- (void)didDiselectAnnotationViewImMap:(MKMapView *)mapView;
-
-@end
+#import "DriverBasicInfoViewProtocol.h"
+@class DriverBasicPopAnnotation;
 
 @interface DriverBasicInfoView : MKAnnotationView<DriverBasicInfoViewProtocol>
-{
-    UIButton *_disclosureBtn;
-}
 
 @property(nonatomic, readwrite) CLLocationCoordinate2D coordinate;
-@property(nonatomic, strong) DPMeterView *commentView;
-@property(nonatomic, strong) FlatRoundedImageView *flatImageView;
-@property(nonatomic, strong) UILabel *driverNameLabel;
-@property(nonatomic, strong) UILabel *driverStatusLabel;
-@property(nonatomic, strong) UILabel *driverSexLabel;
-@property(nonatomic, strong) UILabel *nativePlaceLabel;
-@property(nonatomic, strong) UILabel *driverTimesLabel;
-@property(nonatomic, strong) UILabel *driverAgeLabel;
-@property(nonatomic, strong) UILabel *distanceLabel;
+@property(nonatomic, strong) UIImageView *thumbnail;
+@property(nonatomic, strong) UIImageView *scoreView;
+@property(nonatomic, strong) DriverBasicPopAnnotation *popAnnotation;
+
 
 
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation;

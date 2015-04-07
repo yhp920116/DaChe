@@ -15,6 +15,7 @@
 @property(nonatomic, strong) UILabel *phoneNumLabel;
 @property(nonatomic, strong) UILabel *commentDateLabel;
 @property(nonatomic, strong) UILabel *commentDetailLabel;
+@property(nonatomic, strong) UIImageView *separatorLine;
 
 
 @end

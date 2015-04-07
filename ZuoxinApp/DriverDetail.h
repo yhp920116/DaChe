@@ -14,9 +14,12 @@
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
+    UITableView *_customerCommentTable;
+    UIButton *_moreBtn;
 }
 
 @property(nonatomic,strong) DriverBasicInfo *driverBasicInfo;
+@property(nonatomic,strong) NSMutableArray *commentArr;
 
 - (void)reloadTableViewDataSource;
 - (void)doneLoadingTableViewData;

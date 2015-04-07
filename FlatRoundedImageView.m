@@ -24,7 +24,7 @@
 {
     [super layoutSubviews];
     self.layer.borderColor = self.borderColor.CGColor;
-    self.layer.borderWidth = 1.0f;
+    self.layer.borderWidth = self.borderWidth;
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = CGRectGetWidth(self.bounds)/2;
 }

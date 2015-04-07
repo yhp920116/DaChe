@@ -8,10 +8,14 @@
 
 #import "BasicViewModel.h"
 
+
 @interface ZuoxinReservation : BasicViewModel<UITextFieldDelegate>
 {
     UITextField *_phoneNumField;
     UITextField *_verificationField;
+    NSString *_verificationCode;
+    UIButton *_doneInKeyboardBtn;
+
 }
 
 @end

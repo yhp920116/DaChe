@@ -23,26 +23,23 @@
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 6, 294, 14)];
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.textColor = [UIColor blackColor];
-        _titleLabel.font = [UIFont systemFontOfSize:14.0f];
+        _titleLabel.font = [UIFont systemFontOfSize:12.0f];
         [_headerView addSubview:_titleLabel];
         
-        _textField = [[UITextField alloc] initWithFrame:CGRectMake(6, 26, 270, 24)];
-        _textField.font = [UIFont systemFontOfSize:16.0f];
+        _textField = [[UITextField alloc] initWithFrame:CGRectMake(6, 26, 286, 30)];
+        _textField.font = [UIFont systemFontOfSize:12.0f];
         _textField.borderStyle = UITextBorderStyleNone;
         _textField.keyboardType = UIKeyboardTypeNumberPad;
         _textField.delegate = self;
-        _textField.layer.borderWidth = 1.0f;
-        _textField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        _textField.layer.borderWidth = 0.2f;
+        _textField.layer.cornerRadius = 2.0f;
+        _textField.layer.borderColor = [UIColor grayColor].CGColor;
         [_headerView addSubview:_textField];
         
         _headerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _headerBtn.frame = CGRectMake(0,0,300,HeaderHeight);
         _headerBtn.adjustsImageWhenHighlighted = NO;
         [_headerView addSubview:_headerBtn];
-        
-        _arrowView = [[UIImageView alloc] initWithFrame:CGRectMake(282, 26+7.5, 15, 9)];
-        _arrowView.image = [UIImage imageNamed:@"login_textfield_more_flip.png"];
-        [_headerView addSubview:_arrowView];
         
         
         //contentView
@@ -51,6 +48,7 @@
         
         //Take care!!!
         self.clipsToBounds = YES;
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }

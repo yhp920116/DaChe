@@ -10,6 +10,7 @@
 #import "BasicViewModel.h"
 #import <MapKit/MapKit.h>
 #import "EGORefreshTableHeaderView.h"
+#import "Reachability.h"
 
 
 enum {
@@ -19,13 +20,14 @@ enum {
 };
 typedef NSUInteger TaxiInfoMode;
 
-@interface ZuoxinTaxiInfo : BasicViewModel<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate>
+@interface ZuoxinTaxiInfo : BasicViewModel<EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,CLLocationManagerDelegate>
 {
     MKMapView *_mapView;
     UITableView *_taxiInfoTable;
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
     NSMutableArray *_driverArr;
+    UIButton *_trackBtn;
 }
 
 @property(nonatomic, assign) TaxiInfoMode taxiInfoMode;

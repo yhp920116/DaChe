@@ -7,11 +7,16 @@
 //
 
 #import "BasicViewModel.h"
-#import "CollapseClick.h"
+#import <MapKit/MapKit.h>
+@class CustomTextField;
 
-@interface ZuoxinReservationDetail : BasicViewModel<UITextFieldDelegate,CollapseClickDelegate>
+
+@interface ZuoxinReservationDetail : BasicViewModel<UITextFieldDelegate
+>
 {
-    UITextField *_phoneNumField;
-    CollapseClick *_myCollapseClick;
+    UILabel *_timeLabel;
+    CustomTextField *_driverCountField;
+    UILabel *_locationLabel;
 }
+
 @end

@@ -9,6 +9,7 @@
 #import "DriverBasicInfoAnnotation.h"
 #import "UIBezierPath+BasicShapes.h"
 #import "DPMeterView.h"
+#import "DriverBasicInfoPopView.h"
 
 @implementation DriverBasicInfoAnnotation
 
@@ -24,7 +25,7 @@
 
 - (MKAnnotationView *)annotationViewInMap:(MKMapView *)mapView {
     if (!_view) {
-        _view = (DriverBasicInfoView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"JPSThumbnailAnnotationView"];
+        _view = (DriverBasicInfoView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"DriverBasicInfoAnnotation"];
         if (!_view) _view = [[DriverBasicInfoView alloc] initWithAnnotation:self];
     } else {
         _view.annotation = self;
@@ -44,53 +45,42 @@
     
     if (_view){
         _view.coordinate = self.coordinate;
-        _view.driverNameLabel.text = driverBasicInfo.driverName;
-        [_view.commentView add:driverBasicInfo.commentScore];
-        
-        //driver status
-        switch (driverBasicInfo.driverState) {
-            case 0:
-            {
-                _view.driverStatusLabel.text = @"空闲状态";
-                _view.driverStatusLabel.textColor = [UIColor greenColor];
-                break;
-            }
-            case 1:
-            {
-                _view.driverStatusLabel.text = @"服务中";
-                _view.driverStatusLabel.textColor = [UIColor redColor];
-                break;
-            }
-            case 2:
-            {
-                _view.driverStatusLabel.text = @"休息中";
-                _view.driverStatusLabel.textColor = [UIColor grayColor];
-                break;
-            }
-        }
-        
-        //driver sex
         switch (driverBasicInfo.driverSex) {
             case 0:
             {
-                _view.driverSexLabel.text = @"性别:男";
+                UIImage *manFreeImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"manfree@2x" ofType:@"png"]];
+                UIImage *manBusyImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"manbusy@2x" ofType:@"png"]];
+                
+                if (driverBasicInfo.driverState == 1) {
+                    _view.thumbnail.image = manFreeImg;
+                }
+                else if (driverBasicInfo.driverState == 2)
+                {
+                    _view.thumbnail.image = manBusyImg;
+                }
                 break;
             }
             case 1:
             {
-                _view.driverSexLabel.text = @"性别:女";
+                UIImage *womanFreeImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"womanfree@2x" ofType:@"png"]];
+                UIImage *womanBusyImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"womanbusy@2x" ofType:@"png"]];
+                
+                if (driverBasicInfo.driverState == 1) {
+                    _view.thumbnail.image = womanFreeImg;
+                }
+                else if (driverBasicInfo.driverState == 2)
+                {
+                    _view.thumbnail.image = womanBusyImg;
+                }
                 break;
             }
         }
         
-        //driver native place
+        //scoreView
+        UIImage *scoreImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[[NSString alloc] initWithFormat:@"rating_%d",driverBasicInfo.commentScore] ofType:@"png"]];
+        _view.scoreView.image = scoreImg;
         
-        _view.nativePlaceLabel.text = [NSString stringWithFormat:@"籍贯：%@",_driverBasicInfo.driverNativePlace];
-        _view.driverTimesLabel.text = [NSString stringWithFormat:@"代驾%@次",_driverBasicInfo.driverCount];
-        _view.driverAgeLabel.text = [NSString stringWithFormat:@"驾龄%@年",_driverBasicInfo.driverAge];
-        _view.distanceLabel.text = [NSString stringWithFormat:@"距离12米"];
         
-        [_view.commentView add:driverBasicInfo.commentScore animated:YES];
     }
 }
 

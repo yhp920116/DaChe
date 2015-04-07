@@ -20,7 +20,13 @@
 @property(nonatomic, strong) UILabel *driveAgeLabel;
 @property(nonatomic, strong) UILabel *driverSexLabel;
 @property(nonatomic, strong) DPMeterView *starsProcess;
-@property(nonatomic, strong) UIImageView *arrowView;
+@property(nonatomic, strong) UIButton *callBtn;
 @property(nonatomic, strong) UILabel *nativePlaceLabel;
+@property(nonatomic, strong) UIImageView *driverAgeView;
+@property(nonatomic, strong) UIImageView *driverTimesView;
+@property(nonatomic, strong) UIImageView *distanceView;
+
+- (UIImage *)renderThumbnail:(UIImage *)image;
+
 
 @end

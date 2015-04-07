@@ -10,13 +10,8 @@
 #import <MapKit/MapKit.h>
 #import "DriverBasicInfo.h"
 #import "DriverBasicInfoView.h"
+#import "DriverBasicInfoAnnotationProtocol.h"
 
-@protocol DriverBasicInfoAnnotationProtocol <NSObject>
-
-@required
-- (MKAnnotationView *)annotationViewInMap:(MKMapView *)mapView;
-
-@end
 
 @interface DriverBasicInfoAnnotation : NSObject<MKAnnotation,DriverBasicInfoAnnotationProtocol>
 

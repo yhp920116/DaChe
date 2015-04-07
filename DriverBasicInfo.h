@@ -11,15 +11,18 @@
 
 @interface DriverBasicInfo : NSObject
 
+@property(nonatomic,assign) long long int driverID;
 @property(nonatomic, strong) NSString *driverName;
 @property(nonatomic, strong) NSString *driverPhoneNum;
 @property(nonatomic, strong) NSString *driverAge;
 @property(nonatomic, strong) NSString *driverNativePlace;
 @property(nonatomic, strong) NSString *driverCount;
-@property(nonatomic, strong) NSString *thumbnailURL;
-@property(nonatomic, assign) float commentScore;
+@property(nonatomic, strong) NSData *thumbnailData;
+@property(nonatomic, assign) NSInteger pictype;
+@property(nonatomic, assign) int commentScore;
 @property(nonatomic, assign) NSInteger driverState;
 @property(nonatomic, assign) NSInteger driverSex;
 @property(nonatomic, assign) CLLocationCoordinate2D coordinate;
+@property(nonatomic, assign) __block float distance;
 
 @end

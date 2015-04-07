@@ -7,7 +7,12 @@
 //
 
 #import "BasicViewModel.h"
+#import <MessageUI/MessageUI.h>
 
-@interface ZuoxinInvitation : BasicViewModel<UITableViewDataSource,UITableViewDelegate>
-
+@interface ZuoxinInvitation : BasicViewModel<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,MFMessageComposeViewControllerDelegate>
+{
+    UITextView *_textView;
+    UILabel *_inviteLabel;
+    UILabel *_tipsLabel;
+}
 @end

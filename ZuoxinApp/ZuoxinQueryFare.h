@@ -7,7 +7,14 @@
 //
 
 #import "BasicViewModel.h"
+#import "CustomFieldView.h"
 
-@interface ZuoxinQueryFare : BasicViewModel
+@interface ZuoxinQueryFare : BasicViewModel<UITableViewDataSource,UITableViewDelegate>
+{
+    NSDictionary *_priceDic;
+    NSDictionary *_cityDic;
+    UIView *_priceDetailView;
+    UILabel *_cityLabel;
+}
 
 @end

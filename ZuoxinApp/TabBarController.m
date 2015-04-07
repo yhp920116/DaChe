@@ -8,7 +8,6 @@
 
 #import "TabBarController.h"
 #import "ZuoxinTaxiInfo.h"
-#import "ZuoxinReservation.h"
 #import "ZuoxinQueryFare.h"
 #import "ZuoxinInvitation.h"
 #import "ZuoxinMore.h"
@@ -34,9 +33,6 @@
     ZuoxinTaxiInfo *taxiInfo = [[ZuoxinTaxiInfo alloc] init];
     UINavigationController *taxiInfoNav = [[UINavigationController alloc] initWithRootViewController:taxiInfo];
     
-    ZuoxinReservation *appointment = [[ZuoxinReservation alloc] init];
-    UINavigationController *reservationNav = [[UINavigationController alloc] initWithRootViewController:appointment];
-    
     ZuoxinQueryFare *queryFare = [[ZuoxinQueryFare alloc] init];
     UINavigationController *qureyFareNav = [[UINavigationController alloc] initWithRootViewController:queryFare];
     
@@ -46,7 +42,7 @@
     ZuoxinMore *more = [[ZuoxinMore alloc] init];
     UINavigationController *moreNav = [[UINavigationController alloc] initWithRootViewController:more];
     
-    NSArray *views = [[NSArray alloc] initWithObjects:taxiInfoNav,reservationNav,qureyFareNav,invitationNav,moreNav,nil];
+    NSArray *views = [[NSArray alloc] initWithObjects:taxiInfoNav,qureyFareNav,invitationNav,moreNav,nil];
     
     self.viewControllers = views;
 }
@@ -77,30 +73,26 @@
 {
     [self setTabBarHidden:YES];
     
-    _myTabBar = [[UIImageView alloc] initWithFrame:CGRectMake(0, 480-49, 320, 49)];
-    UIImage *tabBarBg = [UIImage imageNamed:@"tabbar-background@2x.png"];
-    _myTabBar.image = tabBarBg;
+    _myTabBar = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-49, 320, 49)];
     _myTabBar.userInteractionEnabled = YES;
     [self.view addSubview:_myTabBar];
     
-    UIImage *taxiInfoImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tabbar-1@2x" ofType:@"png"]];
-    UIImage *taxiInfoImg_s = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tabbar-1s@2x" ofType:@"png"]];
-    UIImage *appointmentImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tabbar-2@2x" ofType:@"png"]];
-    UIImage *appointmentImg_s = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tabbar-2s@2x" ofType:@"png"]];
-    UIImage *queryFareImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tabbar-3@2x" ofType:@"png"]];
-    UIImage *queryFareImg_s = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tabbar-3s@2x" ofType:@"png"]];
-    UIImage *invitationImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tabbar-4@2x" ofType:@"png"]];
-    UIImage *invitationImg_s = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tabbar-4s@2x" ofType:@"png"]];
-    UIImage *moreImg= [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tabbar-5@2x" ofType:@"png"]];
-    UIImage *moreImg_s= [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tabbar-5s@2x" ofType:@"png"]];
+    UIImage *taxiInfoImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1" ofType:@"png"]];
+    UIImage *taxiInfoImg_s = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"5" ofType:@"png"]];
+    UIImage *queryFareImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"2" ofType:@"png"]];
+    UIImage *queryFareImg_s = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"6" ofType:@"png"]];
+    UIImage *invitationImg = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"3" ofType:@"png"]];
+    UIImage *invitationImg_s = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"7" ofType:@"png"]];
+    UIImage *moreImg= [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"4" ofType:@"png"]];
+    UIImage *moreImg_s= [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"8" ofType:@"png"]];
     
     
-    NSDictionary *imagesDic = [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObjects:taxiInfoImg,appointmentImg,queryFareImg,invitationImg,moreImg,nil],@"normal",
-                               [NSArray arrayWithObjects:taxiInfoImg_s,appointmentImg_s,queryFareImg_s,invitationImg_s,moreImg_s,nil],@"selected",nil];
+    NSDictionary *imagesDic = [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObjects:taxiInfoImg,queryFareImg,invitationImg,moreImg,nil],@"normal",
+                               [NSArray arrayWithObjects:taxiInfoImg_s,queryFareImg_s,invitationImg_s,moreImg_s,nil],@"selected",nil];
     
-    for (NSUInteger i = 0; i < 5; i++) {
+    for (NSUInteger i = 0; i < 4; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setFrame:CGRectMake(0+64*i, 0, 64, 49)];
+        [button setFrame:CGRectMake(0+80*i, 0, 80, 47)];
         [button setTag:i];
         [button setAdjustsImageWhenHighlighted:NO];
         [button setBackgroundImage:[[imagesDic objectForKey:@"normal"] objectAtIndex:i] forState:UIControlStateNormal];
@@ -109,12 +101,12 @@
     }
     
     UIImageView *selectedView = [[UIImageView alloc] init];
-    [selectedView setFrame:CGRectMake(0, 0, 64, 49)];
+    [selectedView setFrame:CGRectMake(0, -14.5, 84.5, 61.5)];
     [selectedView setImage:[[imagesDic objectForKey:@"selected"] objectAtIndex:0]];
     [_myTabBar addSubview:selectedView];
     
     _switchTabBarBtn = ^(NSUInteger tag){
-        [selectedView setFrame:CGRectMake(0+64*tag, 0, 64, 49)];
+        [selectedView setFrame:CGRectMake(0+80*tag, -14.5, 84.5, 61.5 )];
         [selectedView setImage:[[imagesDic objectForKey:@"selected"] objectAtIndex:tag]];
     };
     

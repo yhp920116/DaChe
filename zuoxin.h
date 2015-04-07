@@ -47,6 +47,93 @@
 
 @end
 
+@interface Customer : NSObject <NSCoding> {
+  int64_t __customermobile;
+  NSString * __customername;
+  double __amount;
+  double __coupon;
+  double __credit;
+  BOOL __sex;
+  int32_t __customertype;
+  NSMutableArray * __othermobiles;
+
+  BOOL __customermobile_isset;
+  BOOL __customername_isset;
+  BOOL __amount_isset;
+  BOOL __coupon_isset;
+  BOOL __credit_isset;
+  BOOL __sex_isset;
+  BOOL __customertype_isset;
+  BOOL __othermobiles_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=customermobile, setter=setCustomermobile:) int64_t customermobile;
+@property (nonatomic, retain, getter=customername, setter=setCustomername:) NSString * customername;
+@property (nonatomic, getter=amount, setter=setAmount:) double amount;
+@property (nonatomic, getter=coupon, setter=setCoupon:) double coupon;
+@property (nonatomic, getter=credit, setter=setCredit:) double credit;
+@property (nonatomic, getter=sex, setter=setSex:) BOOL sex;
+@property (nonatomic, getter=customertype, setter=setCustomertype:) int32_t customertype;
+@property (nonatomic, retain, getter=othermobiles, setter=setOthermobiles:) NSMutableArray * othermobiles;
+#endif
+
+- (id) init;
+- (id) initWithCustomermobile: (int64_t) customermobile customername: (NSString *) customername amount: (double) amount coupon: (double) coupon credit: (double) credit sex: (BOOL) sex customertype: (int32_t) customertype othermobiles: (NSMutableArray *) othermobiles;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+#if !__has_feature(objc_arc)
+- (int64_t) customermobile;
+- (void) setCustomermobile: (int64_t) customermobile;
+#endif
+- (BOOL) customermobileIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) customername;
+- (void) setCustomername: (NSString *) customername;
+#endif
+- (BOOL) customernameIsSet;
+
+#if !__has_feature(objc_arc)
+- (double) amount;
+- (void) setAmount: (double) amount;
+#endif
+- (BOOL) amountIsSet;
+
+#if !__has_feature(objc_arc)
+- (double) coupon;
+- (void) setCoupon: (double) coupon;
+#endif
+- (BOOL) couponIsSet;
+
+#if !__has_feature(objc_arc)
+- (double) credit;
+- (void) setCredit: (double) credit;
+#endif
+- (BOOL) creditIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) sex;
+- (void) setSex: (BOOL) sex;
+#endif
+- (BOOL) sexIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) customertype;
+- (void) setCustomertype: (int32_t) customertype;
+#endif
+- (BOOL) customertypeIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) othermobiles;
+- (void) setOthermobiles: (NSMutableArray *) othermobiles;
+#endif
+- (BOOL) othermobilesIsSet;
+
+@end
+
 @interface Driver : NSObject <NSCoding> {
   int64_t __driverid;
   int64_t __mobile;
@@ -63,6 +150,7 @@
   int32_t __pictype;
   NSString * __address;
   BOOL __sex;
+  int32_t __isleader;
 
   BOOL __driverid_isset;
   BOOL __mobile_isset;
@@ -79,6 +167,7 @@
   BOOL __pictype_isset;
   BOOL __address_isset;
   BOOL __sex_isset;
+  BOOL __isleader_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -97,10 +186,11 @@
 @property (nonatomic, getter=pictype, setter=setPictype:) int32_t pictype;
 @property (nonatomic, retain, getter=address, setter=setAddress:) NSString * address;
 @property (nonatomic, getter=sex, setter=setSex:) BOOL sex;
+@property (nonatomic, getter=isleader, setter=setIsleader:) int32_t isleader;
 #endif
 
 - (id) init;
-- (id) initWithDriverid: (int64_t) driverid mobile: (int64_t) mobile name: (NSString *) name score: (int32_t) score longitude: (double) longitude latitude: (double) latitude drivercard: (NSString *) drivercard driveage: (int32_t) driveage province: (NSString *) province drivercount: (int32_t) drivercount state: (int32_t) state picture: (NSData *) picture pictype: (int32_t) pictype address: (NSString *) address sex: (BOOL) sex;
+- (id) initWithDriverid: (int64_t) driverid mobile: (int64_t) mobile name: (NSString *) name score: (int32_t) score longitude: (double) longitude latitude: (double) latitude drivercard: (NSString *) drivercard driveage: (int32_t) driveage province: (NSString *) province drivercount: (int32_t) drivercount state: (int32_t) state picture: (NSData *) picture pictype: (int32_t) pictype address: (NSString *) address sex: (BOOL) sex isleader: (int32_t) isleader;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -195,44 +285,125 @@
 #endif
 - (BOOL) sexIsSet;
 
+#if !__has_feature(objc_arc)
+- (int32_t) isleader;
+- (void) setIsleader: (int32_t) isleader;
+#endif
+- (BOOL) isleaderIsSet;
+
 @end
 
 @interface Order : NSObject <NSCoding> {
   int32_t __orderid;
-  int64_t __customermobile;
-  NSString * __customername;
+  Customer * __customer;
+  Driver * __driver;
   int64_t __createtime;
   int64_t __pretime;
   NSString * __preaddress;
   int32_t __drivercount;
   int32_t __parentorderid;
   int32_t __orderstate;
+  int32_t __ordertype;
+  int64_t __leadermobile;
+  int32_t __commentlevel;
+  NSString * __comment;
+  int64_t __starttime;
+  int64_t __endtime;
+  NSString * __startaddress;
+  NSString * __endaddress;
+  int32_t __city;
+  NSString * __paperid;
+  NSString * __carno;
+  int64_t __rstarttime;
+  int64_t __rendtime;
+  int32_t __waitminutes;
+  NSString * __rstartaddress;
+  NSString * __rendaddress;
+  int32_t __distance;
+  double __totalamount;
+  double __vipamount;
+  double __coupon;
+  double __cash;
+  int32_t __invoice;
+  NSString * __remark;
+  BOOL __complaint;
+  int32_t __canceltype;
 
   BOOL __orderid_isset;
-  BOOL __customermobile_isset;
-  BOOL __customername_isset;
+  BOOL __customer_isset;
+  BOOL __driver_isset;
   BOOL __createtime_isset;
   BOOL __pretime_isset;
   BOOL __preaddress_isset;
   BOOL __drivercount_isset;
   BOOL __parentorderid_isset;
   BOOL __orderstate_isset;
+  BOOL __ordertype_isset;
+  BOOL __leadermobile_isset;
+  BOOL __commentlevel_isset;
+  BOOL __comment_isset;
+  BOOL __starttime_isset;
+  BOOL __endtime_isset;
+  BOOL __startaddress_isset;
+  BOOL __endaddress_isset;
+  BOOL __city_isset;
+  BOOL __paperid_isset;
+  BOOL __carno_isset;
+  BOOL __rstarttime_isset;
+  BOOL __rendtime_isset;
+  BOOL __waitminutes_isset;
+  BOOL __rstartaddress_isset;
+  BOOL __rendaddress_isset;
+  BOOL __distance_isset;
+  BOOL __totalamount_isset;
+  BOOL __vipamount_isset;
+  BOOL __coupon_isset;
+  BOOL __cash_isset;
+  BOOL __invoice_isset;
+  BOOL __remark_isset;
+  BOOL __complaint_isset;
+  BOOL __canceltype_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, getter=orderid, setter=setOrderid:) int32_t orderid;
-@property (nonatomic, getter=customermobile, setter=setCustomermobile:) int64_t customermobile;
-@property (nonatomic, retain, getter=customername, setter=setCustomername:) NSString * customername;
+@property (nonatomic, retain, getter=customer, setter=setCustomer:) Customer * customer;
+@property (nonatomic, retain, getter=driver, setter=setDriver:) Driver * driver;
 @property (nonatomic, getter=createtime, setter=setCreatetime:) int64_t createtime;
 @property (nonatomic, getter=pretime, setter=setPretime:) int64_t pretime;
 @property (nonatomic, retain, getter=preaddress, setter=setPreaddress:) NSString * preaddress;
 @property (nonatomic, getter=drivercount, setter=setDrivercount:) int32_t drivercount;
 @property (nonatomic, getter=parentorderid, setter=setParentorderid:) int32_t parentorderid;
 @property (nonatomic, getter=orderstate, setter=setOrderstate:) int32_t orderstate;
+@property (nonatomic, getter=ordertype, setter=setOrdertype:) int32_t ordertype;
+@property (nonatomic, getter=leadermobile, setter=setLeadermobile:) int64_t leadermobile;
+@property (nonatomic, getter=commentlevel, setter=setCommentlevel:) int32_t commentlevel;
+@property (nonatomic, retain, getter=comment, setter=setComment:) NSString * comment;
+@property (nonatomic, getter=starttime, setter=setStarttime:) int64_t starttime;
+@property (nonatomic, getter=endtime, setter=setEndtime:) int64_t endtime;
+@property (nonatomic, retain, getter=startaddress, setter=setStartaddress:) NSString * startaddress;
+@property (nonatomic, retain, getter=endaddress, setter=setEndaddress:) NSString * endaddress;
+@property (nonatomic, getter=city, setter=setCity:) int32_t city;
+@property (nonatomic, retain, getter=paperid, setter=setPaperid:) NSString * paperid;
+@property (nonatomic, retain, getter=carno, setter=setCarno:) NSString * carno;
+@property (nonatomic, getter=rstarttime, setter=setRstarttime:) int64_t rstarttime;
+@property (nonatomic, getter=rendtime, setter=setRendtime:) int64_t rendtime;
+@property (nonatomic, getter=waitminutes, setter=setWaitminutes:) int32_t waitminutes;
+@property (nonatomic, retain, getter=rstartaddress, setter=setRstartaddress:) NSString * rstartaddress;
+@property (nonatomic, retain, getter=rendaddress, setter=setRendaddress:) NSString * rendaddress;
+@property (nonatomic, getter=distance, setter=setDistance:) int32_t distance;
+@property (nonatomic, getter=totalamount, setter=setTotalamount:) double totalamount;
+@property (nonatomic, getter=vipamount, setter=setVipamount:) double vipamount;
+@property (nonatomic, getter=coupon, setter=setCoupon:) double coupon;
+@property (nonatomic, getter=cash, setter=setCash:) double cash;
+@property (nonatomic, getter=invoice, setter=setInvoice:) int32_t invoice;
+@property (nonatomic, retain, getter=remark, setter=setRemark:) NSString * remark;
+@property (nonatomic, getter=complaint, setter=setComplaint:) BOOL complaint;
+@property (nonatomic, getter=canceltype, setter=setCanceltype:) int32_t canceltype;
 #endif
 
 - (id) init;
-- (id) initWithOrderid: (int32_t) orderid customermobile: (int64_t) customermobile customername: (NSString *) customername createtime: (int64_t) createtime pretime: (int64_t) pretime preaddress: (NSString *) preaddress drivercount: (int32_t) drivercount parentorderid: (int32_t) parentorderid orderstate: (int32_t) orderstate;
+- (id) initWithOrderid: (int32_t) orderid customer: (Customer *) customer driver: (Driver *) driver createtime: (int64_t) createtime pretime: (int64_t) pretime preaddress: (NSString *) preaddress drivercount: (int32_t) drivercount parentorderid: (int32_t) parentorderid orderstate: (int32_t) orderstate ordertype: (int32_t) ordertype leadermobile: (int64_t) leadermobile commentlevel: (int32_t) commentlevel comment: (NSString *) comment starttime: (int64_t) starttime endtime: (int64_t) endtime startaddress: (NSString *) startaddress endaddress: (NSString *) endaddress city: (int32_t) city paperid: (NSString *) paperid carno: (NSString *) carno rstarttime: (int64_t) rstarttime rendtime: (int64_t) rendtime waitminutes: (int32_t) waitminutes rstartaddress: (NSString *) rstartaddress rendaddress: (NSString *) rendaddress distance: (int32_t) distance totalamount: (double) totalamount vipamount: (double) vipamount coupon: (double) coupon cash: (double) cash invoice: (int32_t) invoice remark: (NSString *) remark complaint: (BOOL) complaint canceltype: (int32_t) canceltype;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -244,16 +415,16 @@
 - (BOOL) orderidIsSet;
 
 #if !__has_feature(objc_arc)
-- (int64_t) customermobile;
-- (void) setCustomermobile: (int64_t) customermobile;
+- (Customer *) customer;
+- (void) setCustomer: (Customer *) customer;
 #endif
-- (BOOL) customermobileIsSet;
+- (BOOL) customerIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) customername;
-- (void) setCustomername: (NSString *) customername;
+- (Driver *) driver;
+- (void) setDriver: (Driver *) driver;
 #endif
-- (BOOL) customernameIsSet;
+- (BOOL) driverIsSet;
 
 #if !__has_feature(objc_arc)
 - (int64_t) createtime;
@@ -290,6 +461,156 @@
 - (void) setOrderstate: (int32_t) orderstate;
 #endif
 - (BOOL) orderstateIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) ordertype;
+- (void) setOrdertype: (int32_t) ordertype;
+#endif
+- (BOOL) ordertypeIsSet;
+
+#if !__has_feature(objc_arc)
+- (int64_t) leadermobile;
+- (void) setLeadermobile: (int64_t) leadermobile;
+#endif
+- (BOOL) leadermobileIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) commentlevel;
+- (void) setCommentlevel: (int32_t) commentlevel;
+#endif
+- (BOOL) commentlevelIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) comment;
+- (void) setComment: (NSString *) comment;
+#endif
+- (BOOL) commentIsSet;
+
+#if !__has_feature(objc_arc)
+- (int64_t) starttime;
+- (void) setStarttime: (int64_t) starttime;
+#endif
+- (BOOL) starttimeIsSet;
+
+#if !__has_feature(objc_arc)
+- (int64_t) endtime;
+- (void) setEndtime: (int64_t) endtime;
+#endif
+- (BOOL) endtimeIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) startaddress;
+- (void) setStartaddress: (NSString *) startaddress;
+#endif
+- (BOOL) startaddressIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) endaddress;
+- (void) setEndaddress: (NSString *) endaddress;
+#endif
+- (BOOL) endaddressIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) city;
+- (void) setCity: (int32_t) city;
+#endif
+- (BOOL) cityIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) paperid;
+- (void) setPaperid: (NSString *) paperid;
+#endif
+- (BOOL) paperidIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) carno;
+- (void) setCarno: (NSString *) carno;
+#endif
+- (BOOL) carnoIsSet;
+
+#if !__has_feature(objc_arc)
+- (int64_t) rstarttime;
+- (void) setRstarttime: (int64_t) rstarttime;
+#endif
+- (BOOL) rstarttimeIsSet;
+
+#if !__has_feature(objc_arc)
+- (int64_t) rendtime;
+- (void) setRendtime: (int64_t) rendtime;
+#endif
+- (BOOL) rendtimeIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) waitminutes;
+- (void) setWaitminutes: (int32_t) waitminutes;
+#endif
+- (BOOL) waitminutesIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) rstartaddress;
+- (void) setRstartaddress: (NSString *) rstartaddress;
+#endif
+- (BOOL) rstartaddressIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) rendaddress;
+- (void) setRendaddress: (NSString *) rendaddress;
+#endif
+- (BOOL) rendaddressIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) distance;
+- (void) setDistance: (int32_t) distance;
+#endif
+- (BOOL) distanceIsSet;
+
+#if !__has_feature(objc_arc)
+- (double) totalamount;
+- (void) setTotalamount: (double) totalamount;
+#endif
+- (BOOL) totalamountIsSet;
+
+#if !__has_feature(objc_arc)
+- (double) vipamount;
+- (void) setVipamount: (double) vipamount;
+#endif
+- (BOOL) vipamountIsSet;
+
+#if !__has_feature(objc_arc)
+- (double) coupon;
+- (void) setCoupon: (double) coupon;
+#endif
+- (BOOL) couponIsSet;
+
+#if !__has_feature(objc_arc)
+- (double) cash;
+- (void) setCash: (double) cash;
+#endif
+- (BOOL) cashIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) invoice;
+- (void) setInvoice: (int32_t) invoice;
+#endif
+- (BOOL) invoiceIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) remark;
+- (void) setRemark: (NSString *) remark;
+#endif
+- (BOOL) remarkIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) complaint;
+- (void) setComplaint: (BOOL) complaint;
+#endif
+- (BOOL) complaintIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) canceltype;
+- (void) setCanceltype: (int32_t) canceltype;
+#endif
+- (BOOL) canceltypeIsSet;
 
 @end
 
@@ -348,20 +669,23 @@
   double __version;
   NSString * __downurl;
   NSString * __remark;
+  NSString * __versionname;
 
   BOOL __version_isset;
   BOOL __downurl_isset;
   BOOL __remark_isset;
+  BOOL __versionname_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, getter=version, setter=setVersion:) double version;
 @property (nonatomic, retain, getter=downurl, setter=setDownurl:) NSString * downurl;
 @property (nonatomic, retain, getter=remark, setter=setRemark:) NSString * remark;
+@property (nonatomic, retain, getter=versionname, setter=setVersionname:) NSString * versionname;
 #endif
 
 - (id) init;
-- (id) initWithVersion: (double) version downurl: (NSString *) downurl remark: (NSString *) remark;
+- (id) initWithVersion: (double) version downurl: (NSString *) downurl remark: (NSString *) remark versionname: (NSString *) versionname;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -383,6 +707,12 @@
 - (void) setRemark: (NSString *) remark;
 #endif
 - (BOOL) remarkIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) versionname;
+- (void) setVersionname: (NSString *) versionname;
+#endif
+- (BOOL) versionnameIsSet;
 
 @end
 
@@ -459,6 +789,7 @@
   int32_t __come;
   int64_t __pretime;
   int64_t __customermobile;
+  NSString * __preaddress;
 
   BOOL __orderid_isset;
   BOOL __paperid_isset;
@@ -481,6 +812,7 @@
   BOOL __come_isset;
   BOOL __pretime_isset;
   BOOL __customermobile_isset;
+  BOOL __preaddress_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -505,10 +837,11 @@
 @property (nonatomic, getter=come, setter=setCome:) int32_t come;
 @property (nonatomic, getter=pretime, setter=setPretime:) int64_t pretime;
 @property (nonatomic, getter=customermobile, setter=setCustomermobile:) int64_t customermobile;
+@property (nonatomic, retain, getter=preaddress, setter=setPreaddress:) NSString * preaddress;
 #endif
 
 - (id) init;
-- (id) initWithOrderid: (int32_t) orderid paperid: (NSString *) paperid customername: (NSString *) customername carno: (NSString *) carno starttime: (int64_t) starttime endtime: (int64_t) endtime waitminutes: (int32_t) waitminutes startaddress: (NSString *) startaddress endaddress: (NSString *) endaddress distance: (int32_t) distance totalamount: (double) totalamount vipamount: (double) vipamount coupon: (double) coupon cash: (double) cash invoice: (int32_t) invoice remark: (NSString *) remark complaint: (BOOL) complaint canceltype: (int32_t) canceltype come: (int32_t) come pretime: (int64_t) pretime customermobile: (int64_t) customermobile;
+- (id) initWithOrderid: (int32_t) orderid paperid: (NSString *) paperid customername: (NSString *) customername carno: (NSString *) carno starttime: (int64_t) starttime endtime: (int64_t) endtime waitminutes: (int32_t) waitminutes startaddress: (NSString *) startaddress endaddress: (NSString *) endaddress distance: (int32_t) distance totalamount: (double) totalamount vipamount: (double) vipamount coupon: (double) coupon cash: (double) cash invoice: (int32_t) invoice remark: (NSString *) remark complaint: (BOOL) complaint canceltype: (int32_t) canceltype come: (int32_t) come pretime: (int64_t) pretime customermobile: (int64_t) customermobile preaddress: (NSString *) preaddress;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -639,14 +972,80 @@
 #endif
 - (BOOL) customermobileIsSet;
 
+#if !__has_feature(objc_arc)
+- (NSString *) preaddress;
+- (void) setPreaddress: (NSString *) preaddress;
+#endif
+- (BOOL) preaddressIsSet;
+
+@end
+
+@interface locationinfo : NSObject <NSCoding> {
+  double __longitude;
+  double __latitude;
+  NSString * __address;
+  int32_t __orderid;
+  int64_t __createtime;
+
+  BOOL __longitude_isset;
+  BOOL __latitude_isset;
+  BOOL __address_isset;
+  BOOL __orderid_isset;
+  BOOL __createtime_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=longitude, setter=setLongitude:) double longitude;
+@property (nonatomic, getter=latitude, setter=setLatitude:) double latitude;
+@property (nonatomic, retain, getter=address, setter=setAddress:) NSString * address;
+@property (nonatomic, getter=orderid, setter=setOrderid:) int32_t orderid;
+@property (nonatomic, getter=createtime, setter=setCreatetime:) int64_t createtime;
+#endif
+
+- (id) init;
+- (id) initWithLongitude: (double) longitude latitude: (double) latitude address: (NSString *) address orderid: (int32_t) orderid createtime: (int64_t) createtime;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+#if !__has_feature(objc_arc)
+- (double) longitude;
+- (void) setLongitude: (double) longitude;
+#endif
+- (BOOL) longitudeIsSet;
+
+#if !__has_feature(objc_arc)
+- (double) latitude;
+- (void) setLatitude: (double) latitude;
+#endif
+- (BOOL) latitudeIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) address;
+- (void) setAddress: (NSString *) address;
+#endif
+- (BOOL) addressIsSet;
+
+#if !__has_feature(objc_arc)
+- (int32_t) orderid;
+- (void) setOrderid: (int32_t) orderid;
+#endif
+- (BOOL) orderidIsSet;
+
+#if !__has_feature(objc_arc)
+- (int64_t) createtime;
+- (void) setCreatetime: (int64_t) createtime;
+#endif
+- (BOOL) createtimeIsSet;
+
 @end
 
 @protocol DriverService <NSObject>
-- (NSString *) login: (int64_t) driverid password: (NSString *) password;  // throws RuntimeError *, TException
+- (NSString *) login: (int64_t) driverid password: (NSString *) password token: (NSString *) token;  // throws RuntimeError *, TException
 - (int32_t) checkorder: (NSString *) sessionid;  // throws RuntimeError *, TException
 - (Order *) acceptorder: (NSString *) sessionid orderid: (int32_t) orderid;  // throws RuntimeError *, TException
 - (Driver *) getdriverdetail: (NSString *) sessionid driverid: (int64_t) driverid;  // throws RuntimeError *, TException
-- (NSString *) setlocation: (NSString *) sessionid longitude: (double) longitude latitude: (double) latitude address: (NSString *) address orderid: (int32_t) orderid;  // throws RuntimeError *, TException
+- (NSString *) setlocation: (NSString *) sessionid locations: (NSMutableArray *) locations;  // throws RuntimeError *, TException
 - (NSString *) setstate: (NSString *) sessionid state: (int32_t) state;  // throws RuntimeError *, TException
 - (Order *) createorderbycall: (NSString *) sessionid callmobile: (int64_t) callmobile;  // throws RuntimeError *, TException
 - (NSMutableArray *) getorderlist: (NSString *) sessionid state: (int32_t) state;  // throws RuntimeError *, TException
@@ -655,21 +1054,29 @@
 - (NSMutableArray *) getneardrivers: (NSString *) sessionid count: (int32_t) count distance: (int32_t) distance;  // throws RuntimeError *, TException
 - (NSString *) uporder: (NSString *) sessionid order: (reportorder *) order;  // throws RuntimeError *, TException
 - (NSString *) cancleorder: (NSString *) sessionid order: (reportorder *) order;  // throws RuntimeError *, TException
-- (NSString *) makeuporder: (NSString *) sessionid order: (reportorder *) order;  // throws RuntimeError *, TException
+- (Order *) makeuporder: (NSString *) sessionid order: (reportorder *) order;  // throws RuntimeError *, TException
 - (NSMutableArray *) getnotification: (NSString *) sessionid pageindex: (int32_t) pageindex;  // throws RuntimeError *, TException
-- (NSString *) startorder: (NSString *) sessionid orderid: (int32_t) orderid longitude: (double) longitude latitude: (double) latitude address: (NSString *) address orderstate: (int32_t) orderstate;  // throws RuntimeError *, TException
+- (NSString *) startorder: (NSString *) sessionid location: (locationinfo *) location orderstate: (int32_t) orderstate;  // throws RuntimeError *, TException
+- (NSMutableArray *) getdriversoforder: (NSString *) sessionid orderid: (int32_t) orderid;  // throws RuntimeError *, TException
+- (Order *) getorderbyid: (NSString *) sessiondid orderid: (int32_t) orderid;  // throws RuntimeError *, TException
 - (NSMutableArray *) finddrivers: (double) longitude latitude: (double) latitude count: (int32_t) count distance: (int32_t) distance;  // throws RuntimeError *, TException
 - (NSString *) getvalidatecode: (int64_t) mobile;  // throws RuntimeError *, TException
-- (Order *) orderdrivers: (int64_t) mobile address: (NSString *) address reachtime: (int32_t) reachtime count: (int32_t) count;  // throws RuntimeError *, TException
-- (NSMutableArray *) getdrviercomment: (int32_t) driverid pageindex: (int32_t) pageindex;  // throws RuntimeError *, TException
+- (NSString *) loginforcustomer: (int64_t) mobile validatecode: (NSString *) validatecode token: (NSString *) token devicetype: (int32_t) devicetype;  // throws RuntimeError *, TException
+- (Order *) orderdrivers: (NSString *) sessionid mobile: (int64_t) mobile location: (locationinfo *) location reachtime: (int32_t) reachtime count: (int32_t) count;  // throws RuntimeError *, TException
+- (NSMutableArray *) getdrivercomment: (int64_t) driverid pageindex: (int32_t) pageindex;  // throws RuntimeError *, TException
 - (NSString *) recharge: (int64_t) code mobile: (int64_t) mobile;  // throws RuntimeError *, TException
 - (NSMutableDictionary *) getcitylist;  // throws RuntimeError *, TException
 - (NSMutableDictionary *) getpricelist: (int32_t) city;  // throws RuntimeError *, TException
-- (NSMutableArray *) getcustomerorders: (NSString *) sessionid pageindex: (int32_t) pageindex;  // throws RuntimeError *, TException
-- (NSString *) sendsuggestion: (int32_t) type message: (NSString *) message;  // throws RuntimeError *, TException
+- (NSMutableArray *) getcustomerorders: (NSString *) sessionid pageindex: (int32_t) pageindex state: (int32_t) state;  // throws RuntimeError *, TException
+- (NSString *) sendsuggestion: (int32_t) type message: (NSString *) message mobile: (int64_t) mobile email: (NSString *) email;  // throws RuntimeError *, TException
 - (Appversion *) checkversion: (int32_t) clienttype currversion: (double) currversion;  // throws RuntimeError *, TException
-- (NSString *) sendsms: (NSMutableSet *) mobile message: (NSString *) message;  // throws RuntimeError *, TException
+- (NSString *) commentorder: (int32_t) orderid levelitem: (int32_t) levelitem remark: (NSString *) remark;  // throws RuntimeError *, TException
+- (NSString *) sendsms: (NSString *) password mobile: (NSMutableArray *) mobile message: (NSString *) message;  // throws RuntimeError *, TException
 - (NSData *) decryptpicture: (NSString *) sessionid opicture: (NSData *) opicture apitype: (int32_t) apitype;  // throws RuntimeError *, TException
+- (void) reporterror: (NSString *) mobiletype funcpoint: (NSString *) funcpoint message: (NSString *) message;  // throws TException
+- (NSString *) apns: (NSString *) devicetoken message: (NSString *) message devicetype: (int32_t) devicetype;  // throws RuntimeError *, TException
+- (Customer *) getcustomerinfo: (int64_t) mobile;  // throws RuntimeError *, TException
+- (int32_t) getorderdistance: (NSString *) sessionid orderid: (int32_t) orderid;  // throws RuntimeError *, TException
 @end
 
 @interface DriverServiceClient : NSObject <DriverService> {

@@ -92,12 +92,13 @@
         [self.dataArray addObject:cell];
         
         // Calculate totalHeight
-        totalHeight += HeaderHeight+ 10;
+        totalHeight += HeaderHeight+ 4;
     }
     
     // Set self's ContentSize and ContentOffset
     [self setContentSize:CGSizeMake(self.frame.size.width, totalHeight)];
     [self setContentOffset:CGPointZero];
+    
 }
 
 #pragma mark - Reposition Cells
@@ -148,8 +149,6 @@
 //            cell.contentView.hidden = NO;
             cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.contentView.frame.origin.y + cell.contentView.frame.size.height + 10 );
             
-            //change arrowView
-            cell.arrowView.image = [UIImage imageNamed:@"login_textfield_more.png"];
             
             //reset self.isClickedArray
             [self.isClickedArray replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:YES]];
@@ -196,9 +195,7 @@
 //            cell.contentView.hidden = YES;
             cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, HeaderHeight);
             
-            // Change ArrowView
-            cell.arrowView.image = [UIImage imageNamed:@"login_textfield_more_flip.png"];
-            
+                        
             // Change isClickedArray
             [self.isClickedArray replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:NO]];
             

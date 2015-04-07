@@ -15,7 +15,6 @@
 @property(nonatomic, strong) UILabel *titleLabel;
 @property(nonatomic, strong) UITextField *textField;
 @property(nonatomic, strong) UIButton *headerBtn;
-@property(nonatomic, strong) UIImageView *arrowView;
 
 //body
 @property(nonatomic, strong) UIView *contentView;

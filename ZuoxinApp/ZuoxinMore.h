@@ -8,6 +8,9 @@
 
 #import "BasicViewModel.h"
 
-@interface ZuoxinMore : BasicViewModel
+@interface ZuoxinMore : BasicViewModel<UITableViewDataSource,UITableViewDelegate>
+{
+    UIButton *_logOffBtn;
+}
 
 @end
